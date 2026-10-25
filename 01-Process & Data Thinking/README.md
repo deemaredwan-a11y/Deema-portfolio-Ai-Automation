@@ -48,8 +48,7 @@ An AI-powered automation system that processes incoming client requests for a di
 
 **Key Achievement:** Documented four successful test scenarios covering complete requests, missing budgets, ambiguous timelines, and multiple missing fields.
 
-[Explore the Guided Project](./course-project/)
-
+https://github.com/deemaredwan-a11y/Deema-portfolio-Ai-Automation/tree/main/01-Process%20%26%20Data%20Thinking/Course-Project
 ### 02 — Independent Project
 
 **Project: AI Smart Inquiry Management System**
@@ -62,8 +61,7 @@ An AI-powered automation system designed to manage student inquiries about train
 
 **Key Achievement:** Implemented a workflow combining AI extraction, database lookup, JavaScript validation, and conditional routing. Form submission and automatic-reply path conditions were tested successfully; additional end-to-end verification remains pending.
 
-[Explore the Independent Project](./independent-project/)
-
+https://github.com/deemaredwan-a11y/Deema-portfolio-Ai-Automation/tree/main/01-Process%20%26%20Data%20Thinking/Independent-Project
 ---
 
 ## 🔍 Engineering Focus
