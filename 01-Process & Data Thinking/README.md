@@ -108,8 +108,8 @@ AI helps interpret information, rules control workflow behavior, and humans hand
 
 ## 🔗 Related Projects
 
-- [Guided Project — AI Client Intake & Request Routing System](./course-project/)
-- [Independent Project — AI Smart Inquiry Management System](./independent-project/)
+- [Guided Project — AI Client Intake & Request Routing System](https://github.com/deemaredwan-a11y/Deema-portfolio-Ai-Automation/tree/main/01-Process%20%26%20Data%20Thinking/Course-Project)
+- [Independent Project — AI Smart Inquiry Management System](https://github.com/deemaredwan-a11y/Deema-portfolio-Ai-Automation/tree/main/01-Process%20%26%20Data%20Thinking/Course-Project)
 
 ---
 
