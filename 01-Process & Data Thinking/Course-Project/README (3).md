@@ -256,12 +256,26 @@ Matched the expected output at every layer.
 ## 📸 Evidence
 
 ### Final Result
+### google sheets scrren 
+<img width="1498" height="178" alt="image" src="https://github.com/user-attachments/assets/149f74f7-f800-4cb4-b1cc-a402784534d7" />
 
-![Final Result](./screenshots/final-result.png)
+### New Client Request
+<img width="658" height="541" alt="image" src="https://github.com/user-attachments/assets/01ed358b-571d-4d9c-8db4-63235df0f263" />
+<img width="696" height="511" alt="image" src="https://github.com/user-attachments/assets/8624ef10-31be-4e62-b76d-a9ce8cb8ea8d" />
+
+### Human Review Required
+<img width="652" height="550" alt="image" src="https://github.com/user-attachments/assets/3f2d6ff8-b7c1-49a0-a81e-62d39803d737" />
+<img width="671" height="542" alt="image" src="https://github.com/user-attachments/assets/fdf1b8c6-9823-4fb5-9804-69070316db47" />
+
+
+
+
+
 
 ### Workflow
 
-![Workflow](./screenshots/workflow.png)
+<img width="667" height="603" alt="image" src="https://github.com/user-attachments/assets/2ed920b1-0fb4-4913-b9c1-2384cf92fe32" />
+
 
 ---
 
@@ -308,11 +322,11 @@ If I continued developing this project, I would:
 
 ## 🔗 Project Links
 
-**Live Demo:** [Google Form link]
+**Live Demo:** [https://docs.google.com/forms/d/e/1FAIpQLSfCVbdsgvAKjQbwtCERrhVg_IlTvwlLGVytu_XVGT7dNNzAOg/viewform?usp=dialog]
 
-**Workflow:** [Zapier Zap link]
+**Workflow:** [https://zapier.com/editor/383094938/draft?conversationId=27ac393c-0529-4b61-bfec-fe8c33a8a5f9]
 
-**Repository:** [GitHub repo link]
+**Repository:** [https://github.com/deemaredwan-a11y/Deema-portfolio-Ai-Automation/edit/main/01-Process%20%26%20Data%20Thinking]
 
 ---
 
@@ -320,4 +334,4 @@ If I continued developing this project, I would:
 
 **Deema Redwan**
  
-[LinkedIn](https://www.linkedin.com/in/YOUR-PROFILE) · [GitHub](https://github.com/YOUR-USERNAME)
+[LinkedIn](https://www.linkedin.com/in/deema-radwan-a06a19370/) · [GitHub](https://github.com/deemaredwan-a11y)
