@@ -480,14 +480,16 @@ Pending verification.
 ### Final Result
 
 Add a screenshot of the completed TaskBridge application showing its main interface.
+<img width="1473" height="667" alt="image" src="https://github.com/user-attachments/assets/e7406607-4d13-446c-aa2d-f5e857651e86" />
+<img width="1482" height="662" alt="image" src="https://github.com/user-attachments/assets/f4e36e7e-dd8d-44c2-b641-88ee9c24314f" />
+<img width="1466" height="678" alt="image" src="https://github.com/user-attachments/assets/8a493b76-71de-44cf-92a6-a35c1536642c" />
+
+
+
 
 ![Final Result](./screenshots/final-result.png)
 
-### Workflow
 
-Add a workflow diagram illustrating how users create plans, manage tasks, and monitor progress.
-
-![Workflow](./screenshots/workflow.png)
 
 ### Database Evidence
 
@@ -603,11 +605,10 @@ These improvements would be considered after validating the usability and reliab
 
 ## 🔗 Project Links
 
-**Live Demo:** [Add deployed application URL]
+**Live Demo:** [https://layout-capture-bot.lovable.app]
 
-**Workflow:** [Add workflow diagram URL]
 
-**Repository:** [Add GitHub repository URL]
+**Repository:** []
 
 ---
 
