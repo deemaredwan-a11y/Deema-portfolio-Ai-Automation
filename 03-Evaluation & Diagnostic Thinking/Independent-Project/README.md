@@ -541,11 +541,7 @@ Add a screenshot of the StudentFlow dashboard or completed application.
 
 ![Final Result](./screenshots/final-result.png)
 
-### Workflow
 
-Add a visual diagram of the StudentFlow workflow, showing authentication, subject management, task creation, data storage, and progress tracking.
-
-![Workflow](./screenshots/workflow.png)
 
 ### Additional Evidence
 
