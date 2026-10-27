@@ -1,8 +1,7 @@
-# TaskBridge
+# SkillBridge Lite
+## AI-Powered Career Fit Assistant
 
-> **Turn Unclear Requests into Clear, Actionable Plans.**
-
-TaskBridge is a responsive web application that helps freelancers, recent graduates, and early-career professionals transform unclear work requests and personal goals into structured, actionable plans with tasks, priorities, status tracking, and progress monitoring.
+> A lightweight AI-powered web application that helps students, recent graduates, and early-career professionals compare their professional profiles with career opportunities and receive actionable feedback.
 
 ---
 
@@ -10,54 +9,44 @@ TaskBridge is a responsive web application that helps freelancers, recent gradua
 
 ### The Context
 
-Freelancers, recent graduates, and early-career professionals often receive work requests or set personal goals without having a clear process for achieving them.
+Students, recent graduates, and early-career professionals often have skills, academic projects, and practical experiences but struggle to understand how these qualifications relate to specific career opportunities.
 
-They may understand the desired outcome but struggle to identify the required tasks, organize their responsibilities, and determine where to begin.
+Job descriptions include different skills, responsibilities, and expectations, making it difficult for beginners to evaluate their professional readiness.
 
 ### The Problem
 
-The main challenge is turning an unclear goal into an organized, actionable plan.
+Users face challenges in:
 
-Users may struggle with:
-
-- Defining a clear desired outcome.
-- Breaking complex goals into manageable tasks.
-- Identifying priorities.
-- Tracking completed and pending activities.
-- Knowing what to work on next.
-- Monitoring overall progress.
-
-Without a structured planning system, work can become difficult to organize and track.
+- Identifying relevant skills within their professional profiles.
+- Understanding which projects and experiences support job requirements.
+- Recognizing requirements that are not sufficiently demonstrated in their profiles.
+- Determining practical steps to improve their professional readiness.
 
 ### Why It Matters
 
-Solving this problem helps users:
+Understanding the relationship between professional qualifications and career requirements helps users:
 
-- Organize their work more effectively.
-- Convert abstract goals into concrete actions.
-- Identify important tasks.
-- Track progress toward their objectives.
-- Reduce confusion when starting new projects.
-- Maintain visibility over unfinished work.
+- Make more informed career decisions.
+- Identify areas for professional development.
+- Improve how they present their skills and experiences.
+- Prepare more effectively for career opportunities.
 
 ---
 
 ## 💡 Solution
 
-TaskBridge provides a centralized workspace for managing personal work plans and their associated tasks.
+**SkillBridge Lite** provides a simple web-based experience that compares a user's professional profile with a selected career opportunity.
 
-The system follows a structured workflow:
+The system provides structured feedback that highlights relevant skills, potential gaps, and recommended next steps.
 
-**Goal → Plan → Tasks → Priorities → Status → Progress**
+### What does the system do?
 
-What does the system do?
+1. Allows users to view and edit their professional profiles.
+2. Displays three predefined career opportunities with detailed requirements.
+3. Compares the user's profile with a selected opportunity through AI-powered analysis when available.
+4. Presents structured feedback with relevant skills, potential gaps, and actionable recommendations.
 
-1. **Plan Management:** Allows users to create, view, edit, and delete plans with titles, descriptions, goals, and optional deadlines.
-2. **Task Management:** Enables users to organize tasks within each plan and assign priorities and execution statuses.
-3. **Progress Tracking:** Calculates plan completion percentages based on completed tasks.
-4. **Secure Data Management:** Stores user information in Supabase and uses authentication and database-level access control to protect individual records.
-
-The first version focuses on reliable manual planning and task management rather than automatic AI-generated plans.
+The project focuses on delivering a small, useful solution rather than a complete recruitment platform.
 
 ---
 
@@ -65,159 +54,141 @@ The first version focuses on reliable manual planning and task management rather
 
 **Primary Users:**
 
-- Freelancers managing client requests and personal projects.
-- Recent graduates organizing professional goals.
-- Early-career professionals planning their work.
-- Individuals who need structured task and goal management.
+- University students.
+- Recent graduates.
+- Early-career professionals.
 
 **User Need:**
 
-Users need a simple and secure system that helps them transform unclear objectives into actionable plans, organize tasks, assign priorities, and monitor progress over time.
+Users need a simple way to understand how their existing skills, projects, and experiences relate to a specific career opportunity.
+
+They also need practical feedback to identify what they can improve before applying.
+
+The MVP is designed for a single-user experience without authentication, administrative roles, or account management.
 
 ---
 
 ## 🧠 How I Designed the Solution
 
-I designed TaskBridge around the engineering principle:
+The project follows a user-centered, problem-first approach.
 
-**Build the System, Not the Screen.**
+Instead of starting with implementation or AI prompts, the design process focuses on understanding the user, defining the problem, and identifying the smallest useful solution.
 
-The project focuses on understanding and designing the underlying system rather than only generating a visually attractive interface.
+The design follows five stages:
 
-The main design considerations include:
+1. **Understand the User:** Identify the target audience, career challenges, and primary needs.
+2. **Define the Solution:** Establish the problem statement, proposed solution, and MVP scope.
+3. **Design the Experience:** Define application screens, navigation, and user interactions.
+4. **Design the System:** Identify required data, processing logic, inputs, and outputs.
+5. **Specify & Build with AI:** Translate requirements into implementation instructions for Lovable.
 
-**1. Problem Definition**
-
-Identifying the difficulties users face when organizing unclear goals and work requests.
-
-**2. Requirements Analysis**
-
-Defining essential application functions, including authentication, plan management, task management, progress tracking, and persistent data storage.
-
-**3. Database Design**
-
-Structuring the application around two primary tables:
-
-- `plans`
-- `plan_tasks`
-
-Each plan belongs to a specific user, and each task belongs to a plan owned by that same user.
-
-**4. Security by Design**
-
-Using Supabase Authentication and Row Level Security (RLS) to control access to user data.
-
-**5. Data Integrity**
-
-Defining primary keys, foreign keys, valid task statuses, priority constraints, and ownership relationships.
-
-**6. MVP Scope**
-
-Prioritizing core application functionality before introducing advanced features such as AI-generated plans and external automation integrations.
-
-**7. Testing and Validation**
-
-Preparing functional, persistence, and security test cases to evaluate the application before deployment.
+The solution prioritizes simplicity, usability, clear navigation, and responsible AI-generated feedback.
 
 ---
 
 ## ⚙️ How It Works
 
 ```text
-User Input
-   |
-   v
-User Authentication
-(Supabase Auth)
-   |
-   v
-Create a Plan
-(Title, Description, Goal, Deadline)
-   |
-   v
-Save Plan in Supabase Database
-   |
-   v
-Add Tasks to the Plan
-   |
-   v
-Assign Priorities
-(High / Medium / Low)
-   |
-   v
-Update Task Status
-(To Do / In Progress / Done)
-   |
-   v
-Application Logic
-(Calculate Progress)
-   |
-   v
-Progress Dashboard
-   |
-   v
-Output:
-Organized Plan + Tasks + Progress %
+Professional Profile
+        +
+Selected Career Opportunity
+        |
+        v
+Collect Profile and Opportunity Data
+        |
+        v
+Validate Available Information
+        |
+        v
+AI Fit Analysis
+        |
+        v
+Structured Feedback
+        |
+        +-- Relevant Skills
+        |
+        +-- Potential Gaps
+        |
+        +-- Recommended Next Steps
+        |
+        v
+Display Results to User
 ```
 
-**Progress Calculation:**
+### Core User Flow
 
 ```text
-Progress = (Completed Tasks / Total Tasks) × 100
+HOME
+  |
+  v
+MY PROFILE
+  |
+  v
+EXPLORE OPPORTUNITIES
+  |
+  v
+OPPORTUNITY DETAILS
+  |
+  v
+ANALYZE MY FIT
+  |
+  v
+AI FIT ANALYSIS
+  |
+  v
+RECOMMENDED NEXT STEPS
 ```
 
-Example:
+If real AI functionality is unavailable, the interface may display clearly labeled sample analysis results.
 
-A plan contains five tasks, and two tasks are completed.
-
-```text
-Progress = (2 / 5) × 100 = 40%
-```
-
-If the plan has no tasks, the progress percentage is `0%`.
+Sample results must never be presented as real AI-generated feedback.
 
 ---
 
 ## 🤖 Role of AI
 
-AI is used primarily during the application development process through Lovable, an AI-assisted application builder.
+AI supports the professional fit analysis.
 
-AI contributes to:
+Its responsibilities include:
 
-- Generating application interfaces based on defined requirements.
-- Assisting with application structure and implementation.
-- Supporting iterative development and refinement.
-- Accelerating the translation of technical specifications into application components.
-
-The project emphasizes human responsibility for defining requirements, reviewing generated implementations, and validating the resulting system.
+- Comparing profile information with opportunity requirements.
+- Identifying relevant skills and supporting evidence from the user's profile.
+- Highlighting requirements that are not sufficiently demonstrated.
+- Suggesting practical steps for professional improvement.
+- Organizing feedback into three understandable sections.
 
 ### What AI Should NOT Do
 
-- Automatically generate user plans or tasks in the current MVP.
-- Execute user tasks independently.
-- Replace database-level security controls.
-- Make unauthorized changes to user information.
-- Be considered proof that a feature works without actual testing.
+- Invent skills, projects, qualifications, or professional experiences.
+- Assume that missing information means the user does not possess a skill.
+- Guarantee employment or predict hiring outcomes.
+- Present subjective recommendations as final judgments.
+- Use information that was not provided in the professional profile or selected opportunity.
 
-**Important:** AI-powered plan generation is a proposed future enhancement, not an implemented MVP feature.
+**AI Limitation:** The generated analysis is supportive guidance, not an official hiring assessment.
+
+### AI Implementation Modes
+
+**Real AI Analysis:** Feedback generated by an actual AI model using the provided profile and opportunity information.
+
+**Sample Analysis:** Predefined demonstration feedback used when real AI functionality is unavailable.
+
+The application should clearly identify which mode produced the displayed result.
 
 ---
 
 ## 🔄 Automation
 
-TaskBridge includes application-level operations designed to reduce repetitive manual work.
+The application is designed to simplify several steps automatically:
 
-These include:
+- Retrieve the currently available professional profile information.
+- Load the selected opportunity and its requirements.
+- Prepare the relevant information for comparison.
+- Trigger the analysis process when the user requests it.
+- Organize the returned feedback into predefined sections.
+- Display analysis results without requiring manual comparison.
 
-- Calculating progress percentages from task completion statuses.
-- Updating progress when tasks are added, removed, or their statuses change.
-- Saving and retrieving plans and tasks through the database.
-- Associating records with authenticated users.
-- Deleting related tasks when a plan is deleted through database cascading relationships.
-
-These are application logic and database operations, not external workflow automation.
-
-Integration with platforms such as Zapier or n8n is outside the current MVP scope.
+The MVP does not require autonomous AI agents, scheduled workflows, or external automation platforms.
 
 ---
 
@@ -225,330 +196,290 @@ Integration with platforms such as Zapier or n8n is outside the current MVP scop
 
 ### Input
 
-The system accepts the following information:
+**Professional Profile Data**
 
-**User Information:**
+```text
+name
+headline
+about
+skills
+projects
+experience
+```
 
-- Authentication credentials managed by Supabase Auth.
-- Authenticated user identifier.
+**Opportunity Data**
 
-**Plan Information:**
+```text
+title
+company
+description
+requiredSkills
+responsibilities
+```
 
-- Plan title.
-- Description.
-- Goal or desired outcome.
-- Optional deadline.
-- Deliverables.
-- Optional next step.
-
-**Task Information:**
-
-- Task title.
-- Optional description.
-- Priority: `High`, `Medium`, or `Low`.
-- Status: `To Do`, `In Progress`, or `Done`.
-- Task display order.
-- Associated plan identifier.
+The application contains three predefined sample career opportunities.
 
 ### Output
 
-The system provides:
+The system produces a structured professional fit analysis containing:
 
-- Saved user plans.
-- Organized task lists.
-- Task priorities.
-- Current task execution statuses.
-- Plan completion percentages.
-- Updated plan information.
-- A view of outstanding and completed work.
+**1. Relevant Skills**
 
-### Database Structure
+Skills and experiences mentioned in the user's profile that relate to the selected opportunity.
 
-**Table 1: `plans`**
+**2. Potential Gaps**
 
-Stores user plans, their goals, descriptions, deadlines, deliverables, and timestamps.
+Requirements that need further development or are not sufficiently supported by the provided information.
 
-**Table 2: `plan_tasks`**
+**3. Recommended Next Steps**
 
-Stores tasks associated with individual plans, including priorities, statuses, and display order.
+Practical recommendations for improving the user's profile, skills, or preparation.
 
-**Relationship:**
+### Data Storage
 
-```text
-User
- |
- +-- Plan 1
- |     |
- |     +-- Task 1
- |     +-- Task 2
- |     +-- Task 3
- |
- +-- Plan 2
-       |
-       +-- Task 4
-       +-- Task 5
-```
+The MVP does not require an external database.
 
-The database design specifies a composite foreign key to ensure that tasks belong to plans owned by the same user.
+Profile information can be managed using application state or browser-based local storage.
+
+If local storage is implemented, profile modifications may persist after refreshing the page on the same browser.
+
+The MVP does not provide cross-device account synchronization.
 
 ---
 
 ## 🛠️ Tools & Technologies
 
-| Tool | Purpose |
+| Tool / Technology | Purpose |
 |---|---|
-| Lovable | AI-assisted web application development |
-| Supabase Auth | User registration, login, and authentication |
-| Supabase PostgreSQL | Persistent storage of plans and tasks |
-| Supabase RLS | Database-level user access control |
-| GitHub | Source code management and project documentation |
+| Lovable | Build the web application using natural-language specifications. |
+| AI Language Model | Analyze professional profiles against career opportunity requirements, when enabled. |
+| React-Based UI | Provide interactive screens and reusable interface components through the generated application. |
+| Browser Local Storage (Optional) | Preserve profile edits locally without an external database. |
+| GitHub | Document the project, manage source code if exported, and present the work in a portfolio. |
 
-**Technical Concepts:**
-
-- AI-assisted application development.
-- Relational database design.
-- Authentication and authorization.
-- CRUD operations.
-- Data persistence.
-- Referential integrity.
-- Row Level Security.
-- Responsive web design.
-- Functional and security testing.
+**Implementation Note:** The exact AI provider, model, persistence mechanism, and integration details must be confirmed during development.
 
 ---
 
 ## 🔑 Key Design Decisions
 
-### Decision 1 — Relational Database Structure
+### Decision 1 — Keep the MVP Small
 
 **Decision:**
 
-Use two primary tables, `plans` and `plan_tasks`, connected through a one-to-many relationship.
+Limit the application to five essential features:
+
+1. View and Edit My Profile.
+2. Explore Opportunities.
+3. View Opportunity Details.
+4. Analyze My Fit.
+5. View AI Feedback.
 
 **Why:**
 
-This structure supports organizing multiple tasks under a single plan while maintaining clear relationships and reducing unnecessary data duplication.
+A focused MVP allows the core problem to be addressed without unnecessary complexity.
 
-### Decision 2 — Database-Level Security
+It also helps reduce development effort and unnecessary Lovable credit consumption.
+
+### Decision 2 — Avoid Unnecessary Backend Complexity
 
 **Decision:**
 
-Use Supabase Row Level Security rather than depending exclusively on frontend access restrictions.
+Do not require authentication, Supabase, or an external database for the training version.
 
 **Why:**
 
-Frontend restrictions alone cannot reliably protect user data from direct database requests.
+The application is designed as a single-user learning prototype, and its essential features do not require complex user management or persistent server-side storage.
 
-RLS policies are intended to ensure that users can access only records they own.
-
-### Decision 3 — Composite Foreign Key
+### Decision 3 — Keep AI Feedback Evidence-Based
 
 **Decision:**
 
-Connect `plan_tasks(plan_id, user_id)` to `plans(id, user_id)` using a composite foreign key.
+AI must use only the supplied professional profile and selected opportunity information.
 
 **Why:**
 
-This enforces consistency between task ownership and plan ownership at the database level.
+This minimizes unsupported assumptions and ensures that feedback is grounded in actual user-provided information.
 
-It prevents a task from referencing a plan belonging to another user, provided the constraint is implemented correctly.
-
-### Decision 4 — Calculated Progress
+### Decision 4 — Separate Real AI from Sample Results
 
 **Decision:**
 
-Calculate progress using current task statuses instead of storing a separate progress value.
+Clearly distinguish actual AI-generated analysis from predefined sample feedback.
 
 **Why:**
 
-A dynamically calculated percentage reduces the risk of displaying outdated or inconsistent completion information.
-
-### Decision 5 — Limited MVP Scope
-
-**Decision:**
-
-Build the core planning and task management system before adding AI plan generation or external workflow automation.
-
-**Why:**
-
-A clearly defined MVP allows the essential features, database relationships, and security requirements to be implemented and validated before increasing system complexity.
+A working interface should not create a misleading impression that a real AI model performed an analysis when the results are static.
 
 ---
 
 ## 🧪 Testing
 
-The following test cases are defined in the project requirements. Their actual results must be documented after execution.
+The following test cases define expected behavior. Actual results and statuses should be recorded after implementation.
 
-### Test 1 — Progress Calculation
+### Test 1 — Profile Editing
 
 **Input:**
 
-Create a plan containing four tasks and mark one task as `Done`.
+A user updates their professional headline and adds a new skill.
 
 **Expected Result:**
 
-The application displays a completion percentage of `25%`.
+The updated information appears correctly in the professional profile and is used in subsequent analyses.
 
 **Actual Result:**
 
-Pending verification.
+Pending execution.
 
-**Status:** ⏳ Not yet documented as tested.
+**Status:** ⏳ Not Tested
 
 ---
 
-### Test 2 — Data Persistence
+### Test 2 — Opportunity Selection
 
 **Input:**
 
-Create a plan, add tasks, refresh the page, then log out and log in again.
+A user selects one of the three predefined career opportunities.
 
 **Expected Result:**
 
-The plan, tasks, and saved changes remain available to the authenticated user.
+The application displays the correct opportunity title, description, required skills, and responsibilities.
 
 **Actual Result:**
 
-Pending verification.
+Pending execution.
 
-**Status:** ⏳ Not yet documented as tested.
+**Status:** ⏳ Not Tested
 
 ---
 
-### Test 3 — User Data Isolation
+### Test 3 — Relevant Skills Analysis
 
 **Input:**
 
-Create two user accounts, User A and User B.
+Professional Profile:
 
-Attempt to access, modify, or delete User B's records using User A's account.
+```text
+Skills:
+Python, HTML, CSS
+
+Projects:
+Built a responsive website using HTML and CSS.
+```
+
+Selected Opportunity:
+
+```text
+Title:
+Junior Frontend Developer
+
+Required Skills:
+HTML, CSS, JavaScript
+```
 
 **Expected Result:**
 
-User A cannot read, modify, or delete User B's plans or tasks.
+The analysis identifies HTML and CSS as relevant skills.
+
+It recognizes the website project as supporting evidence.
+
+It identifies JavaScript as a requirement not demonstrated by the provided profile, without assuming the user has no JavaScript knowledge.
 
 **Actual Result:**
 
-Pending verification.
+Pending execution.
 
-**Status:** ⏳ Not yet documented as tested.
+**Status:** ⏳ Not Tested
 
 ---
 
-### Test 4 — Invalid Task Status
+### Test 4 — Missing Information
 
 **Input:**
 
-Attempt to save a task with a status outside the allowed values:
-
-- `To Do`
-- `In Progress`
-- `Done`
+A professional profile with an empty experience section.
 
 **Expected Result:**
 
-The database rejects invalid status values.
+The system acknowledges the absence of experience information without claiming that the user has no professional experience.
 
 **Actual Result:**
 
-Pending verification.
+Pending execution.
 
-**Status:** ⏳ Not yet documented as tested.
+**Status:** ⏳ Not Tested
 
 ---
 
-### Test 5 — Plan Deletion
+### Test 5 — AI Unavailability
 
 **Input:**
 
-Delete a plan containing multiple tasks.
+A user requests an analysis while the AI service is unavailable.
 
 **Expected Result:**
 
-The plan is deleted, and its associated tasks are automatically removed through `ON DELETE CASCADE`.
+The application does not misrepresent static data as AI-generated results.
+
+If sample feedback is displayed, it is explicitly labeled as a demonstration.
 
 **Actual Result:**
 
-Pending verification.
+Pending execution.
 
-**Status:** ⏳ Not yet documented as tested.
+**Status:** ⏳ Not Tested
 
 ---
 
 ## 📸 Evidence
 
+Screenshots should be added after the corresponding application screens and workflows have been implemented.
+
 ### Final Result
 
-Add a screenshot of the completed TaskBridge application showing its main interface.
+[Final Result]()
 
-![Final Result](./screenshots/final-result.png)
 
-### Workflow
-
-Add a workflow diagram illustrating how users create plans, manage tasks, and monitor progress.
-
-![Workflow](./screenshots/workflow.png)
-
-### Database Evidence
-
-Recommended supporting screenshots:
-
-- Supabase database tables.
-- Relationship between `plans` and `plan_tasks`.
-- Row Level Security policies.
-- Task management interface.
-- Progress tracking interface.
-- Successful test results.
-
-Screenshots should be added after the relevant functionality has been verified.
 
 ---
 
 ## ⚠️ Challenges & Failures
 
-### Challenge 1 — Maintaining Data Ownership
+### Anticipated Challenges
 
-**Challenge:**
+**1. Balancing functionality and MVP simplicity**
 
-Designing a database structure that prevents tasks from being associated with plans owned by different users.
+Adding features such as authentication, databases, and external integrations could unnecessarily expand the scope.
 
-**Design Approach:**
+**Planned Approach:**
 
-Specify a composite foreign key involving both the plan identifier and user identifier, supported by RLS policies.
+Prioritize the five core features and postpone nonessential functionality.
 
-**Verification:**
+**2. Preventing unsupported AI conclusions**
 
-The effectiveness of these constraints must be confirmed through database inspection and cross-user access tests.
+AI-generated feedback may incorrectly interpret missing information as evidence that a skill does not exist.
 
-### Challenge 2 — Accurate Progress Tracking
+**Planned Approach:**
 
-**Challenge:**
+Define explicit AI rules requiring evidence-based comparisons and cautious language.
 
-Ensuring progress percentages remain consistent as users modify their task lists.
+**3. Maintaining transparency about AI functionality**
 
-**Design Approach:**
+A demonstration interface could be mistaken for a working AI integration.
 
-Calculate progress directly from task statuses rather than storing an independent percentage.
+**Planned Approach:**
 
-**Verification:**
+Clearly label sample analysis results and distinguish them from real model-generated feedback.
 
-Test task creation, deletion, completion, and reopening.
+**4. Managing Lovable credit usage**
 
-### Challenge 3 — Building Beyond the Interface
+Unclear implementation prompts or repeated full-app redesigns may increase development costs.
 
-**Challenge:**
+**Planned Approach:**
 
-Ensuring the application is not limited to a working visual interface without reliable persistence, integrity, and security.
+Use a staged building process, review each completed stage, and avoid unnecessary changes.
 
-**Design Approach:**
-
-Define database relationships, authentication requirements, access policies, and test cases as part of the system design.
-
-**Verification:**
-
-Review the actual Lovable and Supabase implementations.
-
-**Note:** These are documented engineering challenges and proposed approaches. Specific implementation failures and confirmed fixes should be added when supported by development or testing evidence.
+**Implementation Status:** Actual failures and their verified resolutions should be documented after development and testing.
 
 ---
 
@@ -556,69 +487,58 @@ Review the actual Lovable and Supabase implementations.
 
 ### Technical Lesson
 
-This project demonstrates the importance of designing the backend structure alongside the user interface.
+The project emphasizes the importance of defining data structures, application flows, and component responsibilities before building a web application.
 
-Key technical learning areas include:
-
-- Understanding one-to-many database relationships.
-- Defining primary and foreign keys.
-- Using database constraints to preserve data integrity.
-- Separating authentication from authorization.
-- Understanding the role of Row Level Security.
-- Calculating progress from current system data.
-- Designing for persistent storage.
+It also demonstrates how a focused MVP can avoid unnecessary backend complexity.
 
 ### Problem-Solving Lesson
 
-A useful application begins with a clearly defined problem, not with a list of tools.
+A successful solution starts with understanding the user's needs and translating them into a clear problem definition.
 
-Breaking the project into requirements, data structures, user workflows, and testable outcomes helps establish a more systematic development process.
+The smallest useful solution is often more effective than a feature-heavy application.
 
 ### AI Lesson
 
-AI-assisted development can accelerate application creation, but generated code and interfaces still require human review.
+AI should have a clearly defined role and operate within explicit limitations.
 
-The central lesson is:
+Reliable AI feedback requires structured inputs, evidence-based analysis, transparent limitations, and clear separation between real and simulated functionality.
 
-**AI can help build a system, but the developer remains responsible for understanding, directing, testing, and improving it.**
-
-This reflects the project's engineering principle:
-
-**Build the System, Not the Screen.**
+These are the intended learning outcomes; they can be updated with practical lessons after implementation.
 
 ---
 
 ## 🔮 Future Improvements
 
-If I continued developing this project, I would:
+If I continued developing this project beyond the MVP, I would consider:
 
-- **AI Plan Generation:** Allow users to describe a goal in natural language and receive a suggested plan.
-- **AI Output Evaluation:** Evaluate generated plans for clarity, completeness, realism, and alignment with user goals.
-- **Automation Integration:** Connect TaskBridge with external workflow automation tools to support additional processes.
-- **Progressive Web App (PWA):** Explore a more app-like experience across devices.
+- Allowing users to upload resumes for profile extraction.
+- Supporting opportunities provided directly by users.
+- Adding secure user authentication and cloud-based profile storage.
+- Providing personalized learning resources for identified skill gaps.
+- Maintaining a history of completed analyses.
+- Improving AI evaluation using representative test cases and predefined quality criteria.
 
-These improvements would be considered after validating the usability and reliability of the MVP.
+These improvements are outside the scope of the current MVP.
 
 ---
 
 ## 🔗 Project Links
 
-**Live Demo:** [Add deployed application URL]
+[Live Demo:](https://layout-capture-bot.lovable.app)
 
-**Workflow:** [Add workflow diagram URL]
+[Repository:](https://github.com/deemaredwan-a11y/Deema-portfolio-Ai-Automation/edit/main/02-System%20Thinking)
 
-**Repository:** [Add GitHub repository URL]
+Links will be updated after deployment and repository setup.
 
 ---
 
 ## 👩‍💻 Author
 
-**[Your Name]**
+**[Deema Redwan ]**
 
- · [GitHub Profile]
+[LinkedIn](https://www.linkedin.com/in/deema-radwan-a06a19370/) 
+[GitHub](https://github.com/deemaredwan-a11y)
 
 ---
 
-**TaskBridge — Turn Unclear Requests into Clear, Actionable Plans.**
-
-*Build the System, Not the Screen.*
+*SkillBridge Lite — Build the smallest useful solution that solves the right problem.*
