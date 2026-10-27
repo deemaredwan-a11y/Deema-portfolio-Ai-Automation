@@ -535,11 +535,7 @@ Lovable described this database behavior as implemented, but no completed manual
 
 ## 📸 Evidence
 
-### Final Result
-
-Add a screenshot of the StudentFlow dashboard or completed application.
-
-![Final Result](./screenshots/final-result.png)
+[Final Result](https://github.com/deemaredwan-a11y/Deema-portfolio-Ai-Automation/tree/main/03-Evaluation%20%26%20Diagnostic%20Thinking/Independent-Project/Screenshots)
 
 
 
@@ -662,10 +658,10 @@ These features are outside the current MVP.
 
 ## 🔗 Project Links
 
-**Live Demo:** [https://academi-hub-arabic.lovable.app]
+[Live Demo:](https://academi-hub-arabic.lovable.app)
 
 
-**Repository:** [Add GitHub repository URL]
+[Repository:](https://github.com/deemaredwan-a11y/Deema-portfolio-Ai-Automation/edit/main/03-Evaluation%20%26%20Diagnostic%20Thinking)
 
 ---
 
@@ -673,7 +669,8 @@ These features are outside the current MVP.
 
 **[Deema Redwan]**
 
-[https://www.linkedin.com/in/deema-radwan-a06a19370/] · [https://github.com/deemaredwan-a11y]
+[linkedin](https://www.linkedin.com/in/deema-radwan-a06a19370/)
+[github](https://github.com/deemaredwan-a11y)
 
 ---
 
