@@ -1,4 +1,4 @@
-# Shashti Amna — AI Digital Safety Awareness Chatbot
+Shashti Amna — AI Digital Safety Awareness Chatbot
 
 > An Arabic-language AI chatbot that helps followers of the Shashti Amna awareness campaign access information about online blackmail, digital violence, prevention, and safe response steps using a dedicated knowledge base.
 
@@ -194,15 +194,16 @@ Not documented in the supplied evidence.
 
 ### Final Result
 
-**Add a screenshot showing a real chatbot question and its final response.**
+<img width="1535" height="330" alt="image" src="https://github.com/user-attachments/assets/314db7e0-c259-4c3d-a4f9-a988a4623c2f" />
+<img width="1530" height="717" alt="image" src="https://github.com/user-attachments/assets/da33dbd6-0963-4d32-b1dc-468c321b6850" />
 
-Suggested file path: `screenshots/final-result.png`
+<img width="1372" height="391" alt="image" src="https://github.com/user-attachments/assets/086024ca-37fa-4ce1-b201-60defd2a7853" />
+<img width="1302" height="703" alt="image" src="https://github.com/user-attachments/assets/7267c0ee-cdae-4459-9a70-2d0169d9f1da" />
+<img width="1397" height="710" alt="image" src="https://github.com/user-attachments/assets/e2a1c2d9-7bac-486a-a782-00f547ecb302" />
 
-### Workflow
 
-**Screenshot provided:** Dify Chatflow showing User Input → Knowledge Retrieval → Gemini LLM → Answer.
 
-Suggested file path: `screenshots/workflow.png`
+
 
 ### Knowledge Base
 
@@ -260,11 +261,11 @@ If I continued developing this project, I would:
 
 ## 🔗 Project Links
 
-**Live Demo:** [Add your published Dify chatbot link]
+[Live Demo:](https://udify.app/chat/BKRF5rRdZXkcfTbU)
 
-**Workflow:** [Add a link to the workflow or its screenshot in your repository]
 
-**Repository:** [Add your GitHub project URL]
+
+[Repository](https://github.com/deemaredwan-a11y/Deema-portfolio-Ai-Automation/edit/main/04-Grounding%20Thinking)
 
 ---
 
@@ -272,7 +273,7 @@ If I continued developing this project, I would:
 
 **[Your Name]**
 
-[LinkedIn] · [GitHub]
+[LinkedIn](https://www.linkedin.com/in/deema-radwan-a06a19370/) · [GitHub](https://github.com/deemaredwan-a11y)
 
 ---
 
