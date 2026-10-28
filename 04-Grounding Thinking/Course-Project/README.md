@@ -207,7 +207,14 @@ One response was insufficiently detailed despite retrieving results from the rel
 
 ## 📸 Evidence
 
-### [Final Result]()
+<img width="1276" height="353" alt="image" src="https://github.com/user-attachments/assets/578ec4a2-0884-481f-88b3-6923e49191a4" />
+<img width="1317" height="680" alt="image" src="https://github.com/user-attachments/assets/924817ab-ca00-4a62-ac1c-4e6bd218504f" />
+<img width="1270" height="708" alt="image" src="https://github.com/user-attachments/assets/cc592e66-518b-4a44-842c-90920650ac68" />
+<img width="1277" height="722" alt="image" src="https://github.com/user-attachments/assets/8b93b919-e7d4-4dad-9d8c-d8af4cf2dbac" />
+
+
+
+
 
 
 Other evidence described in the project plan includes screenshots of assistant setup, the knowledge base, retrieval settings, and test results. Screenshot filenames in the source documentation are organizational examples, not verified links.
@@ -258,7 +265,7 @@ If I continued developing this project, I would:
 
 ## 🔗 Project Links
 
-**Live Demo:** [Add published application link]
+[Live Demo:](https://udify.app/chat/LiQAnMjvd4jTWINg)
 
 
 [Repository:](https://github.com/deemaredwan-a11y/Deema-portfolio-Ai-Automation/edit/main/04-Grounding%20Thinking)
