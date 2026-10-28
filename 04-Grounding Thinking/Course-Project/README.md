@@ -207,13 +207,8 @@ One response was insufficiently detailed despite retrieving results from the rel
 
 ## 📸 Evidence
 
-### Final Result
+### [Final Result]()
 
-[Add a verified link to the final result screenshot once uploaded to the repository.]
-
-### Workflow
-
-[Add a verified screenshot link showing Start → Knowledge Retrieval → LLM → Answer.]
 
 Other evidence described in the project plan includes screenshots of assistant setup, the knowledge base, retrieval settings, and test results. Screenshot filenames in the source documentation are organizational examples, not verified links.
 
@@ -265,17 +260,16 @@ If I continued developing this project, I would:
 
 **Live Demo:** [Add published application link]
 
-**Workflow:** [Add workflow screenshot or documentation link]
 
-**Repository:** [Add TECHFIX GitHub repository link]
+[Repository:](https://github.com/deemaredwan-a11y/Deema-portfolio-Ai-Automation/edit/main/04-Grounding%20Thinking)
 
 ---
 
 ## 👩‍💻 Author
 
-**[Your Name]**
+**[Deema Redwan ]**
 
-[LinkedIn] · [GitHub]
+[LinkedIn](https://www.linkedin.com/in/deema-radwan-a06a19370/) · [GitHub](https://github.com/deemaredwan-a11y)
 
 ---
 
