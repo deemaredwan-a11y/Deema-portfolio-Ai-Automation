@@ -320,7 +320,7 @@ If I continued developing this project, I would:
 
 [Live Demo](t.me/deemaAssistant_bot)
 
-[Workflow]()
+[Workflow .json](https://github.com/deemaredwan-a11y/Deema-portfolio-Ai-Automation/blob/main/05-Agent-and-Decision-Thinking/Course-Project/My%20workflow.json)
 
 [Repository](https://github.com/deemaredwan-a11y/Deema-portfolio-Ai-Automation/edit/main/05-Agent-and-Decision-Thinking)_
 
