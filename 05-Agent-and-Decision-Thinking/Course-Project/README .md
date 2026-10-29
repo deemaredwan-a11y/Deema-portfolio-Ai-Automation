@@ -253,16 +253,23 @@ Not tested / no execution evidence provided.
 ---
 
 ## 📸 Evidence
+**workflow**
+<img width="1415" height="616" alt="image" src="https://github.com/user-attachments/assets/217bed26-2543-4afa-9a5d-8d0b56350834" />
 
-### Final Result
+**chatbot telegram**
+<img width="926" height="725" alt="image" src="https://github.com/user-attachments/assets/e31fa308-3473-451b-960b-da51cfe5aa3f" />
 
-![Final Result](./screenshots/final-result.png)
+**sheets**
+<img width="1041" height="177" alt="image" src="https://github.com/user-attachments/assets/a799de58-3493-4f46-8b76-a57b566fc50d" />
 
-### Workflow
 
-![Workflow](./screenshots/workflow.png)
 
-*These are template image paths. Add actual screenshots with these filenames under `screenshots/` for the images to display on GitHub.*
+
+
+
+
+
+
 
 ---
 
@@ -311,16 +318,16 @@ If I continued developing this project, I would:
 
 ## 🔗 Project Links
 
-**Live Demo:** _Add Telegram bot/demo URL when available._
+[Live Demo](t.me/deemaAssistant_bot)
 
-**Workflow:** _Add a link to the exported n8n workflow or its repository file._
+[Workflow]()
 
-**Repository:** _Add the GitHub repository URL._
+[Repository](https://github.com/deemaredwan-a11y/Deema-portfolio-Ai-Automation/edit/main/05-Agent-and-Decision-Thinking)_
 
 ---
 
 ## 👩‍💻 Author
 
-**[Your Name]**
+**[Deema Redwan ]**
 
-[LinkedIn — add profile URL] · [GitHub — add profile URL]
+[LinkedIn](https://www.linkedin.com/in/deema-radwan-a06a19370/) · [GitHub](https://github.com/deemaredwan-a11y)
