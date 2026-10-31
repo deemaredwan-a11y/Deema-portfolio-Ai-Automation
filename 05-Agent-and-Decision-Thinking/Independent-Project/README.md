@@ -1,5 +1,4 @@
-# ContentPilot AI — Research-to-LinkedIn Content Agent
-
+ContentPilot AI — Research-to-LinkedIn Content Agent
 > An n8n-based AI agent that processes a planned technical topic from Google Sheets, researches it with Firecrawl, drafts an Arabic LinkedIn post, and prepares delivery to Telegram for human review.
 
 ---
@@ -285,16 +284,15 @@ These are **NOT TESTED** until supported by actual execution logs and screenshot
 ## 📸 Evidence
 
 ### Final Result
+**workflow:**
+<img width="1506" height="533" alt="image" src="https://github.com/user-attachments/assets/9f795414-23f0-4a46-81f8-fce662cacf99" />
 
-![Final Result](./screenshots/final-result.png)
+**sheets**
+<img width="1482" height="573" alt="image" src="https://github.com/user-attachments/assets/fae574ab-4bf3-4b12-b9db-82f9a9f8efa0" />
 
-*Add an actual screenshot of a successful ContentPilot AI draft delivered to its intended Telegram bot; this has not yet been verified in the shared evidence.*
+**Telegram bot:**
+<img width="947" height="713" alt="image" src="https://github.com/user-attachments/assets/97dc429e-a345-43bc-ad28-3c295409468f" />
 
-### Workflow
-
-![Workflow](./screenshots/workflow.png)
-
-*Add a current screenshot of the completed n8n workflow, with sensitive credentials redacted.*
 
 ---
 
@@ -346,11 +344,11 @@ If I continued developing this project, I would:
 
 ## 🔗 Project Links
 
-**Live Demo:** [Add your ContentPilot Telegram bot/demo link after verifying delivery]
+[Live Demo](t.me/ContentPilotDeema_bot. )
 
-**Workflow:** [Add a sanitized n8n workflow JSON file or permitted share link]
+[Workflow](https://github.com/deemaredwan-a11y/Deema-portfolio-Ai-Automation/blob/main/05-Agent-and-Decision-Thinking/Independent-Project/ContentPilot%20AI.json)
 
-**Repository:** [Add your GitHub repository link]
+[Repository](https://github.com/deemaredwan-a11y/Deema-portfolio-Ai-Automation/edit/main/05-Agent-and-Decision-Thinking)
 
 ---
 
@@ -358,4 +356,4 @@ If I continued developing this project, I would:
 
 **Deema Said Radwan**
 
-[LinkedIn profile — add URL] · [GitHub profile — add URL]
+[LinkedIn profile](https://www.linkedin.com/in/deema-radwan-a06a19370/) · [GitHub profile](https://github.com/deemaredwan-a11y)
