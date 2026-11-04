@@ -5,7 +5,7 @@
 **Implementation platform:** n8n Cloud  
 **Project status:** Functional prototype; additional hardening required before production  
 **Report date:** November 2026  
-**Prepared by:** [deema sead Redwan]  
+**Prepared by:** [deema  Redwan]  
 **Repository:** [https://github.com/deemaredwan-a11y/Deema-portfolio-Ai-Automation/edit/main/telecom-ai-customer-support-project]  
 **Demo video:** [ADD DEMO LINK]  
 **Presentation (5 minutes):** [ADD PRESENTATION LINK]
@@ -280,7 +280,3 @@ The exported workflows are implementation references, not guaranteed one-click d
 
 This project demonstrates a functioning modular AI support automation integrating RAG retrieval, Telegram messaging, persistent conversation history, ticket-level human escalation, Google Sheets reporting, and administrative error alerts. The observed demonstrations validate the core workflow under selected scenarios. The next engineering priority is **robustness**, especially full-history handoff, idempotent retries, security review, and additional tests before any real customer launch.
 
----
-
-**Prepared for:** [ADD PROGRAM / CLIENT / REVIEWER]  
-**Review status:** [ADD APPROVAL / REVIEW DATE]
