@@ -20,13 +20,17 @@ Save redacted screenshots under `assets/screenshots/` in this repository. Replac
 
 | Evidence ID | What to capture | Placeholder |
 |---|---|---|
-| EV-01 | Workflow 01 successful insertion (26 items) | `ADD_LINK: assets/screenshots/ev-01-knowledge-ingestion.png` |
-| EV-02 | `documents` table with populated content/embedding | `ADD_LINK: assets/screenshots/ev-02-supabase-documents.png` |
-| EV-03 | Telegram answer for M15 | `ADD_LINK: assets/screenshots/ev-03-m15-answer.png` |
-| EV-04 | Telegram follow-up about automatic renewal | `ADD_LINK: assets/screenshots/ev-04-followup-memory.png` |
-| EV-05 | `messages` records for customer and assistant | `ADD_LINK: assets/screenshots/ev-05-supabase-messages.png` |
-| EV-06 | Gmail human escalation HTML | `ADD_LINK: assets/screenshots/ev-06-escalation-email.png` |
-| EV-07 | `support_tickets` row with `pending` and non-null `email_sent_at` | `ADD_LINK: assets/screenshots/ev-07-support-ticket.png` |
+| EV-01 | Workflow 01 successful insertion (26 items) | <img width="1033" height="612" alt="image" src="https://github.com/user-attachments/assets/61794195-f93a-49ab-ad1d-33646a2926c2" />|
+| EV-02 | `documents` table with populated content/embedding |<img width="982" height="673" alt="image" src="https://github.com/user-attachments/assets/8c144284-471d-4e29-bc78-0a908dc60642" />|
+| EV-03 | Telegram answer for M15 | <img width="576" height="242" alt="image" src="https://github.com/user-attachments/assets/cf01221e-c3b9-49ec-a41d-a13ba5ac333c" />|
+| EV-04 | Telegram follow-up about automatic renewal | <img width="565" height="135" alt="image" src="https://github.com/user-attachments/assets/79f990dd-877c-44e7-8df4-cceb3ceab930" />|
+| EV-05 | `messages` records for customer and assistant |<img width="1221" height="446" alt="image" src="https://github.com/user-attachments/assets/b01335b9-d119-42d7-817b-521e152c98da" />|
+| EV-06 | Gmail human escalation HTML | <img width="558" height="146" alt="image" src="https://github.com/user-attachments/assets/b2489ae9-96d6-41d8-bb27-68af0b013e2c" />
+
+<img width="756" height="1046" alt="image" src="https://github.com/user-attachments/assets/31ef3c63-1fd5-4848-a6e4-899972a3f687" />
+|
+| EV-07 | `support_tickets` row with `pending` and non-null `email_sent_at` |<img width="1221" height="241" alt="image" src="https://github.com/user-attachments/assets/7d0f8f30-661a-44d8-8dfb-b347f9beb985" />
+ |
 | EV-08 | M30 response after an escalation | `ADD_LINK: assets/screenshots/ev-08-answer-after-escalation.png` |
 | EV-09 | Google Sheets answered/escalated rows | `ADD_LINK: assets/screenshots/ev-09-google-sheets.png` |
 | EV-10 | Intentional Stop and Error failed production execution | `ADD_LINK: assets/screenshots/ev-10-intentional-error.png` |
