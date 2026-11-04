@@ -2,7 +2,24 @@
 
 ## Carousel
 
-[Image], [Image], [Image], [Image], [Image]
+**Cover**
+<img width="1080" height="1350" alt="Artboard 1 jpg" src="https://github.com/user-attachments/assets/ba73b671-b4bc-4ade-a804-862f96be4396" />
+
+**Mobile Internet**
+<img width="1080" height="1350" alt="Artboard 5 jpg" src="https://github.com/user-attachments/assets/9fa4895f-f291-4480-a42c-ade8a59dd074" />
+
+**Home Internet**
+<img width="1080" height="1350" alt="Artboard 4 jpg" src="https://github.com/user-attachments/assets/bdc86e11-3340-48f6-8131-33a9f61844c6" />
+
+**AI Support**
+<img width="1080" height="1350" alt="Artboard 3 jpg" src="https://github.com/user-attachments/assets/0c1d4afc-17d1-4c5e-af17-712febff7594" />
+
+**CTA**
+<img width="1080" height="1350" alt="تصميم بدون عنوان (6)" src="https://github.com/user-attachments/assets/dce84e67-d996-4fc9-af35-24e9dbbc31a5" />
+
+
+
+
 
 ## Caption
 
