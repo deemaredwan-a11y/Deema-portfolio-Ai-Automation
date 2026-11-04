@@ -25,17 +25,14 @@ Save redacted screenshots under `assets/screenshots/` in this repository. Replac
 | EV-03 | Telegram answer for M15 | <img width="576" height="242" alt="image" src="https://github.com/user-attachments/assets/cf01221e-c3b9-49ec-a41d-a13ba5ac333c" />|
 | EV-04 | Telegram follow-up about automatic renewal | <img width="565" height="135" alt="image" src="https://github.com/user-attachments/assets/79f990dd-877c-44e7-8df4-cceb3ceab930" />|
 | EV-05 | `messages` records for customer and assistant |<img width="1221" height="446" alt="image" src="https://github.com/user-attachments/assets/b01335b9-d119-42d7-817b-521e152c98da" />|
-| EV-06 | Gmail human escalation HTML | <img width="558" height="146" alt="image" src="https://github.com/user-attachments/assets/b2489ae9-96d6-41d8-bb27-68af0b013e2c" />
-
-<img width="756" height="1046" alt="image" src="https://github.com/user-attachments/assets/31ef3c63-1fd5-4848-a6e4-899972a3f687" />
+| EV-06 | Gmail human escalation HTML | <img width="558" height="146" alt="image" src="https://github.com/user-attachments/assets/b2489ae9-96d6-41d8-bb27-68af0b013e2c" /> <img width="756" height="1046" alt="image" src="https://github.com/user-attachments/assets/31ef3c63-1fd5-4848-a6e4-899972a3f687" />|
+| EV-07 | `support_tickets` row with `pending` and non-null `email_sent_at` |<img width="1221" height="241" alt="image" src="https://github.com/user-attachments/assets/7d0f8f30-661a-44d8-8dfb-b347f9beb985" /> |
+| EV-08 | M30 response after an escalation | <img width="562" height="277" alt="image" src="https://github.com/user-attachments/assets/1c62d456-0c53-4faf-9505-551ebd35911c" />|
+| EV-09 | Google Sheets answered/escalated rows |<img width="950" height="310" alt="image" src="https://github.com/user-attachments/assets/69491d50-cc59-41ce-9288-32ecee21dd29" />|
+| EV-10 | Intentional Stop and Error failed production execution |<img width="887" height="671" alt="image" src="https://github.com/user-attachments/assets/9ca9b78b-a4bf-4a74-a7e1-a1626cf53b85" />|
+| EV-11 | Administrator Gmail failure alert |<img width="665" height="600" alt="image" src="https://github.com/user-attachments/assets/5eb38318-299c-4ade-8b55-e153905d554d" />|
+| EV-12 | Full Workflow 02 canvas |<img width="1488" height="477" alt="image" src="https://github.com/user-attachments/assets/b37c94e1-5394-474c-a0a9-b100dec7c419" />
 |
-| EV-07 | `support_tickets` row with `pending` and non-null `email_sent_at` |<img width="1221" height="241" alt="image" src="https://github.com/user-attachments/assets/7d0f8f30-661a-44d8-8dfb-b347f9beb985" />
- |
-| EV-08 | M30 response after an escalation | `ADD_LINK: assets/screenshots/ev-08-answer-after-escalation.png` |
-| EV-09 | Google Sheets answered/escalated rows | `ADD_LINK: assets/screenshots/ev-09-google-sheets.png` |
-| EV-10 | Intentional Stop and Error failed production execution | `ADD_LINK: assets/screenshots/ev-10-intentional-error.png` |
-| EV-11 | Administrator Gmail failure alert | `ADD_LINK: assets/screenshots/ev-11-error-email.png` |
-| EV-12 | Full Workflow 02 canvas | `ADD_LINK: assets/screenshots/ev-12-workflow-02.png` |
 
 ## 3. Executed test cases
 
@@ -75,7 +72,6 @@ Save redacted screenshots under `assets/screenshots/` in this repository. Replac
 - **Follow-up:** “طيب هل يتم تجديدها بشكل تلقائي بعد الانتهاء؟”
 - **Observed answer:** The scenario does not automatically renew mobile bundles.
 - **Fix applied:** Search preparation was changed to include previous-question context so RAG could retrieve a more relevant policy passage.
-- **Screenshot:** `ADD_LINK: EV-03 / EV-04`
 
 ### C. Human escalation without blocking future questions
 
@@ -83,7 +79,6 @@ Save redacted screenshots under `assets/screenshots/` in this repository. Replac
 - **Behavior:** AI returns `NEEDS_HUMAN` → ticket lookup → create a new ticket if absent → send formatted Gmail → update `email_sent_at` → notify customer via Telegram → append row in Google Sheets.
 - **Observed:** `public.support_tickets` showed a `pending` ticket with a non-null mail-sent timestamp. After escalation, a fresh M30 pricing question received a correct automated answer.
 - **Important boundary:** `email_sent_at` indicates the Gmail send node completed; it does **not** prove the employee read or resolved the request.
-- **Screenshot:** `ADD_LINK: EV-06 / EV-07 / EV-08`
 
 ### D. Error monitoring
 
@@ -91,7 +86,6 @@ Save redacted screenshots under `assets/screenshots/` in this repository. Replac
 - **Injected error:** `TEST_ERROR: Intentional failure to verify Gmail alert`.
 - **Observed:** n8n recorded a failed production execution; Workflow 03 sent a red HTML email including workflow name, failing node, error message, time, and execution link.
 - **Cleanup required:** Ensure `TEST — Error Handling` is **unpublished/deactivated** after test. Do not leave an unauthenticated public error-generating Webhook running.
-- **Screenshot:** `ADD_LINK: EV-10 / EV-11`
 
 ## 5. Problems discovered and corrections
 
@@ -116,27 +110,6 @@ Save redacted screenshots under `assets/screenshots/` in this repository. Replac
 - [ ] **Operational configuration:** Confirm Workflow 01/02/03 published as intended and `02 → Error Workflow = 03` after final edits.
 - [ ] **PDF support:** Validate PDF extraction separately; text input test alone is not proof of PDF ingestion.
 
-## 7. Final acceptance record (fill after last verification)
 
-| Item | Value |
-|---|---|
-| Tester | `ADD_NAME_OR_TEAM` |
-| Test completion date | `ADD_DATE` |
-| n8n version / deployment | `ADD_VERSION` |
-| Verified commit or workflow export version | `ADD_COMMIT_HASH` |
-| Total cases passed / failed / pending | `ADD_COUNTS` |
-| Link to demo recording | `ADD_DEMO_URL` |
-| Link to live project / portfolio | `ADD_PORTFOLIO_URL` |
-| Final reviewer / sign-off | `ADD_REVIEWER` |
 
-## 8. Evidence formatting example
 
-Replace placeholder entries above with actual Markdown references once **redacted** screenshots are uploaded:
-
-```markdown
-![M15 answer shown in Telegram](../assets/screenshots/ev-03-m15-answer.png)
-
-[View recorded n8n execution](ADD_VERIFIED_EXECUTION_LINK)
-```
-
-**Reminder:** Do not publish Telegram chat IDs, personal email addresses, customer names, API credentials, full private transcripts, or unredacted project URLs that grant access. Keep detailed/raw test records in a private evidence location when necessary.
