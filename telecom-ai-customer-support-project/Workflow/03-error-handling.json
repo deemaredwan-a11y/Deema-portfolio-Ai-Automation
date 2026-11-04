@@ -1,0 +1,105 @@
+{
+  "name": "03 — Error Handling",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "name": "Error Trigger",
+      "id": "5e14f5fa-b1f6-4f00-8800-513ac6bcd4a5"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "name": "workflow_name",
+              "value": "={{ $json.workflow?.name ?? 'Unknown Workflow' }}",
+              "type": "string"
+            },
+            {
+              "name": "failed_node",
+              "value": "={{ $json.execution?.lastNodeExecuted ?? $json.trigger?.error?.node?.name ?? 'Unknown Node' }}",
+              "type": "string"
+            },
+            {
+              "name": "error_message",
+              "value": "={{ $json.execution?.error?.message ?? $json.trigger?.error?.message ?? 'Unknown Error' }}",
+              "type": "string"
+            },
+            {
+              "name": "execution_url",
+              "value": "={{ $json.execution?.url ?? 'Not available' }}",
+              "type": "string"
+            },
+            {
+              "name": "error_time",
+              "value": "={{ $now.toISO() }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        224,
+        0
+      ],
+      "name": "Edit Fields",
+      "id": "55f155b7-a3fb-4a23-a1b5-cc8576b277e6"
+    },
+    {
+      "parameters": {
+        "subject": "={{ `🚨 n8n Error Alert | ${$json.workflow_name}` }}",
+        "message": "= {{ (() => {   const e = (v) => String(v ?? '')     .replace(/&/g, '&amp;')     .replace(/</g, '&lt;')     .replace(/>/g, '&gt;')     .replace(/\"/g, '&quot;')     .replace(/'/g, '&#39;');    return `   <div style=\"background:#f3f6fa;padding:25px;font-family:Arial,sans-serif;\">     <div style=\"max-width:600px;margin:auto;background:#fff;border-radius:12px;overflow:hidden;\">        <div style=\"background:#991b1b;color:white;padding:24px;\">         <h2 style=\"margin:0;\">Workflow Failure Alert</h2>         <p>Telecom AI Support — Error Monitoring</p>       </div>        <div style=\"padding:24px;color:#1e293b;\">         <p><strong>Workflow:</strong> ${e($json.workflow_name)}</p>         <p><strong>Failed Node:</strong> ${e($json.failed_node)}</p>          <p><strong>Error Message:</strong></p>         <div style=\"background:#fef2f2;padding:15px;border-radius:8px;white-space:pre-wrap;\">           ${e($json.error_message)}         </div>          <p><strong>Time:</strong> ${e($json.error_time)}</p>         <p><strong>Execution:</strong> ${e($json.execution_url)}</p>          <p style=\"color:#64748b;font-size:13px;\">           Please review the failed execution in n8n.         </p>       </div>      </div>   </div>`; })() }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        448,
+        0
+      ],
+      "name": "Send a message",
+      "id": "54dac7f2-76d6-49b3-a8eb-5b9cace30588"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "nodeGroups": [],
+  "tags": []
+}
