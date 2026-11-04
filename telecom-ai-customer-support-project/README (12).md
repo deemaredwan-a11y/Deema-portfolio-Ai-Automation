@@ -12,9 +12,9 @@
 
 **Repository:** [Telecom AI Customer Support Project](https://github.com/deemaredwan-a11y/Deema-portfolio-Ai-Automation/tree/main/telecom-ai-customer-support-project)  
 **Automation files:** [n8n Workflows](Workflow/)  
-**Client proposal:** [PDF](docs/client-proposal.pdf) · [Markdown](docs/client-proposal.md)  
-**System architecture:** [View diagram](docs/system-architecture.png)  
-**Final report:** [PDF](docs/final-report.pdf) · [Markdown](docs/final-report.md)  
+**Client proposal:**· [Markdown](docs/client-proposal.md)  
+**System architecture:** [View diagram](https://github.com/deemaredwan-a11y/Deema-portfolio-Ai-Automation/blob/main/telecom-ai-customer-support-project/docs/telecom-system-architecture%20(1).png)  
+**Final report:** [Markdown](docs/final-report.md)  
 **Test evidence:** [Testing report](tests/testing-evidence.md)  
 **Brand brief:** [Mini brand brief](content/brand-brief.md)  
 **Prompt engineering:** [Prompts and improvements](content/prompts.md)  
