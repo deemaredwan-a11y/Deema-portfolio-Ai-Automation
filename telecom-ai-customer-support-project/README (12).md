@@ -18,8 +18,7 @@
 **Test evidence:** [Testing report](tests/testing-evidence.md)  
 **Brand brief:** [Mini brand brief](content/brand-brief.md)  
 **Prompt engineering:** [Prompts and improvements](content/prompts.md)  
-**Main content:** [Social carousel assets](content/main-content/)  
-**Supporting content:** [Supporting assets](content/supporting-content/)  
+**Main content:** [Social carousel assets](https://github.com/deemaredwan-a11y/Deema-portfolio-Ai-Automation/blob/main/telecom-ai-customer-support-project/content/main-content.md)  
 **Recorded system demo:** Coming soon — video not yet uploaded.  
 **AI-generated marketing video:** Coming soon — not yet uploaded.  
 **Final pitch slides:** Coming soon — presentation not yet uploaded.
@@ -58,7 +57,7 @@ A pending ticket does not intentionally prevent the customer from asking unrelat
 
 ## 🏗️ 4. System architecture
 
-[**View architecture diagram**](docs/system-architecture.png)
+[**View architecture diagram**](https://github.com/deemaredwan-a11y/Deema-portfolio-Ai-Automation/blob/main/telecom-ai-customer-support-project/docs/telecom-system-architecture%20(1).png)
 
 ```mermaid
 flowchart TD
@@ -139,7 +138,7 @@ Detailed prompts, retrieval behavior, and **Before → Issue → After → Impac
 | Google Sheets logging | Interaction rows recorded |
 | Intentional n8n error | Administrator Gmail alert delivered |
 
-For screenshots and the full test record, see **[tests/testing-evidence.md](tests/testing-evidence.md)** and **[assets/screenshots/](assets/screenshots/)**. These are specific observed tests, not a measured uptime, accuracy rate, or load-test claim.
+For  the full test record, see **[tests/testing-evidence.md](tests/testing-evidence.md)** and . These are specific observed tests, not a measured uptime, accuracy rate, or load-test claim.
 
 ## 🎨 9. Mini content package
 
@@ -148,8 +147,8 @@ The communication package introduces telecom services and the AI-powered Telegra
 | Deliverable | Project path |
 | --- | --- |
 | Target audience, goals, tone and visual direction | [content/brand-brief.md](content/brand-brief.md) |
-| Main social media content / carousel | [content/main-content/](content/main-content/) |
-| Supporting visual or AI-generated video | [content/supporting-content/](content/supporting-content/) |
+| Main social media content / carousel | [content/main-content/](https://github.com/deemaredwan-a11y/Deema-portfolio-Ai-Automation/blob/main/telecom-ai-customer-support-project/content/main-content.md) |
+| Supporting visual or AI-generated video | [content/supporting-content/]() |
 | Important prompts and iterations | [content/prompts.md](content/prompts.md) |
 
 **Visual direction:** Green `#76BC21`, blues, turquoise, white and light gray `#F5F5F7`; modern telecom-style visuals with concise Arabic messaging.
