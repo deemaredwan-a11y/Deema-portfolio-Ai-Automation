@@ -5,8 +5,8 @@
 **Implementation platform:** n8n Cloud  
 **Project status:** Functional prototype; additional hardening required before production  
 **Report date:** November 2026  
-**Prepared by:** [ADD NAME / TEAM]  
-**Repository:** [ADD PROJECT GITHUB URL]  
+**Prepared by:** [deema sead Redwan]  
+**Repository:** [https://github.com/deemaredwan-a11y/Deema-portfolio-Ai-Automation/edit/main/telecom-ai-customer-support-project]  
 **Demo video:** [ADD DEMO LINK]  
 **Presentation (5 minutes):** [ADD PRESENTATION LINK]
 
@@ -259,14 +259,14 @@ The exported workflows are implementation references, not guaranteed one-click d
 
 | Deliverable | Location / URL |
 |---|---|
-| Client proposal | [`client-proposal.md`](client-proposal.md) or [ADD PDF LINK] |
+| Client proposal | [`client-proposal.md`](client-proposal.md) or [https://www.upwork.com/freelance-jobs/apply/Support-Chatbot-Developer-n8n-RAG-Knowledge-Base-for-WhatsApp-Website_~022109719195596113872/?utm_source=chatgpt.com] |
 | Architecture diagram | [`system-architecture.png`](system-architecture.png) |
 | Workflow exports | [`../Workflow/`](../Workflow/) |
 | Testing evidence | [`../tests/testing-evidence.md`](../tests/testing-evidence.md) |
 | Prompt documentation | [`../content/prompts.md`](../content/prompts.md) |
 | Recorded demo | [ADD DEMO VIDEO LINK] |
 | Five-minute pitch | [ADD SLIDES LINK] |
-| Repository / portfolio | [ADD PROJECT LINK] |
+| Repository / portfolio | [https://github.com/deemaredwan-a11y/Deema-portfolio-Ai-Automation/edit/main/telecom-ai-customer-support-project] |
 
 ### Screenshot placeholders
 
