@@ -12,16 +12,24 @@
 
 **Repository:** [Telecom AI Customer Support Project](https://github.com/deemaredwan-a11y/Deema-portfolio-Ai-Automation/tree/main/telecom-ai-customer-support-project)  
 **Automation files:** [n8n Workflows](Workflow/)  
+
 **Client proposal:**· [Markdown](docs/client-proposal.md)  
+
 **System architecture:** [View diagram](https://github.com/deemaredwan-a11y/Deema-portfolio-Ai-Automation/blob/main/telecom-ai-customer-support-project/docs/telecom-system-architecture%20(1).png)  
+
 **Final report:** [Markdown](docs/final-report.md)  
+
 **Test evidence:** [Testing report](tests/testing-evidence.md)  
+
 **Brand brief:** [Mini brand brief](content/brand-brief.md)  
+
 **Prompt engineering:** [Prompts and improvements](content/prompts.md)  
+
 **Main content:** [Social carousel assets](https://github.com/deemaredwan-a11y/Deema-portfolio-Ai-Automation/blob/main/telecom-ai-customer-support-project/content/main-content.md)  
-**Recorded system demo:** Coming soon — video not yet uploaded.  
-**AI-generated marketing video:** Coming soon — not yet uploaded.  
-**Final pitch slides:** Coming soon — presentation not yet uploaded.
+
+**Recorded system demo:** [ video dimo](https://drive.google.com/file/d/1MgocSh_harQYPjIQPWX4tyUPk8rVlLZS/view?usp=sharing)
+
+**Final pitch slides:** [pitch](https://docs.google.com/presentation/d/1zQ-W5EWwpzjF0WESMnXyd_cCsRyLrV7c/edit?usp=sharing&ouid=111372596439131909300&rtpof=true&sd=true)
 
 > Links above use paths relative to this README. A link will work on GitHub **once the corresponding file has been uploaded at that exact path**. Folder links require the folders to exist. Video and slide links are deliberately not invented.
 
