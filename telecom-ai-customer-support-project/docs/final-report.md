@@ -7,8 +7,8 @@
 **Report date:** November 2026  
 **Prepared by:** [deema  Redwan]  
 **Repository:** [https://github.com/deemaredwan-a11y/Deema-portfolio-Ai-Automation/edit/main/telecom-ai-customer-support-project]  
-**Demo video:** [ADD DEMO LINK]  
-**Presentation (5 minutes):** [ADD PRESENTATION LINK]
+**Demo video:** [https://drive.google.com/file/d/1MgocSh_harQYPjIQPWX4tyUPk8rVlLZS/view?usp=sharing]  
+**Presentation (5 minutes):** [https://docs.google.com/presentation/d/1zQ-W5EWwpzjF0WESMnXyd_cCsRyLrV7c/edit?usp=sharing&ouid=111372596439131909300&rtpof=true&sd=true]
 
 > **Scope and evidence:** This report describes the implementation represented by the exported n8n workflow files and the demonstrations recorded during project development. The knowledge base uses the **Wasla Experimental Telecom** content pack, not verified commercial data from an operating telecom provider. Observed functional tests do not establish production reliability.
 
@@ -264,17 +264,11 @@ The exported workflows are implementation references, not guaranteed one-click d
 | Workflow exports | [`../Workflow/`](../Workflow/) |
 | Testing evidence | [`../tests/testing-evidence.md`](../tests/testing-evidence.md) |
 | Prompt documentation | [`../content/prompts.md`](../content/prompts.md) |
-| Recorded demo | [ADD DEMO VIDEO LINK] |
-| Five-minute pitch | [ADD SLIDES LINK] |
+| Recorded demo | (https://drive.google.com/file/d/1MgocSh_harQYPjIQPWX4tyUPk8rVlLZS/view?usp=sharing) |
+| Five-minute pitch | [https://docs.google.com/presentation/d/1zQ-W5EWwpzjF0WESMnXyd_cCsRyLrV7c/edit?usp=sharing&ouid=111372596439131909300&rtpof=true&sd=true] |
 | Repository / portfolio | [https://github.com/deemaredwan-a11y/Deema-portfolio-Ai-Automation/edit/main/telecom-ai-customer-support-project] |
 
-### Screenshot placeholders
 
-- **[ADD Screenshot: Complete Customer Support Canvas]**
-- **[ADD Screenshot: Supabase `documents` table]**
-- **[ADD Screenshot: Telegram direct answer + follow-up]**
-- **[ADD Screenshot: Support ticket + Gmail handoff]**
-- **[ADD Screenshot: Error Handler execution + notification]**
 
 ## 14. Conclusion
 
