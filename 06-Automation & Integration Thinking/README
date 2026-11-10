@@ -1,1 +1,585 @@
 
+# PlanCraft AI — AI-Powered Project Planning Application
+
+> Transforming project ideas into structured, actionable plans through AI-powered automation and application integration.
+
+---
+
+## 🎯 Problem
+
+### The Context
+
+Individuals, entrepreneurs, and small business owners often begin with promising project ideas but struggle to translate them into organized execution plans.
+
+Planning a project requires identifying objectives, defining phases, prioritizing activities, anticipating risks, and determining practical next steps.
+
+### The Problem
+
+Turning an initial idea into a structured project plan can be time-consuming and challenging, particularly for users without formal project management experience.
+
+Common challenges include:
+
+- Unclear project objectives.
+- Difficulty breaking ideas into actionable tasks.
+- Lack of structured execution phases.
+- Limited awareness of potential risks.
+- Difficulty identifying priorities and next steps.
+
+### Why It Matters
+
+A well-structured plan helps users move from ideas to execution with greater clarity and confidence.
+
+Automating the initial planning process can reduce repetitive manual work, improve consistency, and help users make more informed decisions.
+
+---
+
+## 💡 Solution
+
+**PlanCraft AI** is an AI-powered project planning application designed to transform user-submitted ideas into structured and actionable plans.
+
+The solution integrates a web application, a database, and an AI automation workflow.
+
+### What Does the System Do?
+
+1. **Collect Project Information:** Users submit a project title, description, goals, and additional context.
+2. **Store Requests:** The application saves project requests in Supabase.
+3. **Generate Plans:** An n8n workflow processes requests and uses an AI model to generate structured project plans.
+4. **Save and Display Results:** Generated plans are stored in Supabase and displayed through the application.
+
+The intended output includes:
+
+- Project summary.
+- Main project goal.
+- Execution phases.
+- Recommended actions.
+- Potential risks.
+- Estimated project duration.
+
+---
+
+## 👤 Users
+
+**Primary Users:**
+
+- Entrepreneurs and startup founders.
+- Students developing academic or practical projects.
+- Freelancers managing client projects.
+- Small business owners.
+- Individuals seeking structured project planning assistance.
+
+**User Need:**
+
+Users need a simple and accessible way to convert an initial idea into a practical plan without manually organizing every planning component.
+
+---
+
+## 🧠 How I Designed the Solution
+
+The solution follows a modular architecture that separates the user interface, data storage, and AI automation.
+
+Instead of building a single application responsible for every operation, the design distributes responsibilities across specialized tools.
+
+**Lovable** handles user interaction and the application interface.
+
+**Supabase** manages project requests, generated plans, and processing statuses.
+
+**n8n Cloud** orchestrates the automated workflow and coordinates AI processing with database operations.
+
+The design emphasizes:
+
+- Separation of responsibilities.
+- Structured data management.
+- Reusable integration components.
+- Clear workflow states.
+- Secure communication between services.
+- Error handling and validation.
+- Separation of AI-generated content from deterministic application logic.
+
+This approach supports maintainability, debugging, and future system improvements.
+
+---
+
+## ⚙️ How It Works
+
+```text
+User
+  |
+  v
+Lovable Web Application
+  |
+  v
+Submit Project Information
+  |
+  v
+Supabase Database
+  |
+  v
+Save Project Request
+  |
+  v
+Secure Server-Side Integration
+  |
+  v
+n8n Cloud Webhook
+  |
+  v
+Validate Request
+  |
+  v
+Retrieve Project Context
+  |
+  v
+AI Analysis
+  |
+  v
+Generate Structured Project Plan
+  |
+  v
+Validate Generated Output
+  |
+  v
+Supabase Database
+  |
+  v
+Save Generated Plan
+  |
+  v
+Update Processing Status
+  |
+  v
+Lovable Application
+  |
+  v
+Display Project Plan
+```
+
+### Workflow Explanation
+
+**Step 1 — Project Submission**
+
+The user enters project information through the Lovable application.
+
+**Step 2 — Data Storage**
+
+The project request is stored in the `project_requests` table in Supabase.
+
+**Step 3 — Automation Trigger**
+
+A secure server-side integration sends the existing request ID to the n8n Production Webhook.
+
+**Step 4 — AI Processing**
+
+The n8n workflow retrieves and analyzes the project information to generate a structured plan.
+
+**Step 5 — Database Update**
+
+The generated plan is saved in the `project_plans` table, and the request status is updated.
+
+**Step 6 — Result Display**
+
+The application checks the request status and retrieves the actual saved plan from Supabase.
+
+---
+
+## 🤖 Role of AI
+
+AI is responsible for interpreting project information and generating structured planning recommendations.
+
+Its responsibilities include:
+
+- Analyzing project descriptions and objectives.
+- Breaking projects into logical execution phases.
+- Suggesting practical actions.
+- Identifying potential risks and considerations.
+- Providing estimated timelines when sufficient context is available.
+- Producing structured output compatible with the application.
+
+### What AI Should NOT Do
+
+- Generate fake project information or claim unsupported facts.
+- Modify database records outside the authorized workflow.
+- Decide whether a database operation succeeded without verification.
+- Replace input validation or deterministic business rules.
+- Expose private credentials or sensitive configuration.
+- Claim that a generated plan guarantees project success.
+
+AI provides planning recommendations, while deterministic workflow logic handles validation, data storage, status management, and error processing.
+
+---
+
+## 🔄 Automation
+
+The system is designed to automate the following processes:
+
+- Receiving project generation requests.
+- Triggering the n8n workflow through a Webhook.
+- Validating incoming request data.
+- Retrieving project information from Supabase.
+- Sending project context to the AI model.
+- Processing structured AI responses.
+- Saving generated plans to the database.
+- Updating request processing statuses.
+- Enabling the frontend to retrieve completed results.
+- Handling processing failures.
+
+### Automation Objective
+
+Reduce manual project planning effort while ensuring that generated results are stored, traceable, and accessible through the application.
+
+---
+
+## 🗂️ Data
+
+### Input
+
+The application collects:
+
+| Field | Description |
+|---|---|
+| Project Title | Name of the proposed project |
+| Project Description | Description of the project idea |
+| Main Goal | Intended project outcome |
+| Additional Context | Constraints, budget, audience, or additional requirements |
+
+Project information is stored in the `project_requests` table.
+
+### Output
+
+The AI-generated result is stored in the `project_plans` table.
+
+| Field | Description |
+|---|---|
+| Summary | Overview of the generated plan |
+| Project Goal | Defined objective |
+| Phases | Structured execution stages |
+| Recommended Actions | Practical next steps |
+| Risks | Potential challenges and considerations |
+| Estimated Duration | Suggested implementation timeline |
+
+### Database Structure
+
+**Table 1 — `project_requests`**
+
+Stores the original project information and processing status.
+
+Possible statuses:
+
+- `pending`
+- `processing`
+- `completed`
+- `failed`
+
+**Table 2 — `project_plans`**
+
+Stores the generated project plan associated with the original request.
+
+Each plan is linked to its corresponding project request through `request_id`.
+
+This relationship supports data consistency and structured retrieval.
+
+---
+
+## 🛠️ Tools & Technologies
+
+| Tool | Purpose |
+|---|---|
+| Lovable | Build the application interface and user experience |
+| Supabase | Store project requests, generated plans, and processing statuses |
+| PostgreSQL | Manage relational database records |
+| n8n Cloud | Orchestrate automation workflows |
+| AI Language Model | Analyze project information and generate structured plans |
+| Webhooks | Trigger automation through HTTP requests |
+| HTTP / REST APIs | Enable communication between application components |
+| JSON | Exchange structured data between services |
+| GitHub | Document the project and its architecture |
+
+---
+
+## 🔑 Key Design Decisions
+
+### Decision 1 — Separate the Application from the Automation
+
+**Decision:**
+
+Use Lovable for the application interface and n8n Cloud for automation.
+
+**Why:**
+
+Separating frontend responsibilities from workflow execution improves maintainability and makes the system easier to extend, troubleshoot, and modify.
+
+### Decision 2 — Use Supabase as the Central Data Store
+
+**Decision:**
+
+Store user requests and generated plans in separate, related database tables.
+
+**Why:**
+
+This supports structured data management, maintains relationships between requests and results, and enables the application to retrieve actual saved records.
+
+### Decision 3 — Use Secure Server-Side Integration
+
+**Decision:**
+
+Trigger n8n through a protected server-side function rather than exposing private integration credentials in the browser.
+
+**Why:**
+
+This reduces the risk of exposing Webhook credentials and privileged database keys.
+
+### Decision 4 — Separate AI Generation from Completion Status
+
+**Decision:**
+
+Use explicit processing statuses instead of assuming that accepting a Webhook request means plan generation has succeeded.
+
+**Why:**
+
+AI processing can fail, time out, or require additional processing time.
+
+The application should report completion only after the real result has been saved successfully.
+
+### Decision 5 — Store Structured AI Output
+
+**Decision:**
+
+Store generated phases, recommended actions, and risks in structured JSON-compatible fields.
+
+**Why:**
+
+Structured results are easier to validate, store, retrieve, and display consistently.
+
+---
+
+## 🧪 Testing
+
+The following cases define the intended verification process.
+
+**Verification Status:** Actual execution results must be confirmed using the implemented application, database records, and n8n execution history.
+
+### Test 1 — Valid Project Request
+
+**Input:**
+
+Project Title:
+Launch an Online Handmade Accessories Store
+
+Project Description:
+Create an online store selling handmade accessories and organize the required launch activities.
+
+**Expected Result:**
+
+- The application accepts the input.
+- The request is saved in Supabase.
+- A valid request ID is generated.
+- The project appears in the application.
+
+**Actual Result:**
+
+Pending verification against the deployed application and Supabase records.
+
+**Status:** ⏳ Not verified
+
+---
+
+### Test 2 — Missing Required Information
+
+**Input:**
+
+An empty project title or description.
+
+**Expected Result:**
+
+- The application rejects incomplete input.
+- A clear validation message appears.
+- No invalid request is submitted for processing.
+
+**Actual Result:**
+
+Pending verification through application testing.
+
+**Status:** ⏳ Not verified
+
+---
+
+### Test 3 — AI Plan Generation
+
+**Input:**
+
+A valid saved project request submitted for AI analysis.
+
+**Expected Result:**
+
+- The secure integration sends the request ID to n8n.
+- The workflow retrieves the correct project data.
+- AI generates a structured plan.
+- The output is validated and stored in `project_plans`.
+- The request status changes to `completed`.
+- The frontend displays the real saved plan.
+
+**Actual Result:**
+
+Pending end-to-end verification with n8n execution history and Supabase database evidence.
+
+**Status:** ⏳ Not verified
+
+---
+
+### Test 4 — Automation Failure
+
+**Input:**
+
+A request that encounters an AI processing or integration failure.
+
+**Expected Result:**
+
+- The failure is handled appropriately.
+- The request status is updated to `failed`.
+- The application displays a clear error state.
+- The system does not display a fabricated plan.
+
+**Actual Result:**
+
+Pending failure-path testing.
+
+**Status:** ⏳ Not verified
+
+---
+
+## 📸 Evidence
+
+The following evidence should be added from the actual project implementation.
+
+### Final Result
+
+![PlanCraft AI Application](./screenshots/final-result.png)
+
+*Placeholder: Screenshot of the application displaying an actual generated project plan.*
+
+### Workflow
+
+![n8n Automation Workflow](./screenshots/workflow.png)
+
+*Placeholder: Screenshot of the n8n workflow connecting the application, AI processing, and Supabase.*
+
+### Database Evidence
+
+![Supabase Database](./screenshots/database.png)
+
+*Placeholder: Screenshot showing the project request and its associated generated plan.*
+
+### Testing Evidence
+
+![End-to-End Test](./screenshots/testing.png)
+
+*Placeholder: Screenshot showing the result of a real end-to-end test.*
+
+> Note: Add the corresponding image files to the `screenshots` directory before publishing the evidence section.
+
+---
+
+## ⚠️ Challenges & Failures
+
+### Challenge 1 — Integrating Multiple Platforms
+
+Connecting an application, a database, and an automation platform requires consistent data exchange and clearly defined responsibilities.
+
+**Approach:**
+
+Use a modular architecture with structured request data, secure integration points, and clear workflow boundaries.
+
+### Challenge 2 — Managing Asynchronous Processing
+
+AI plan generation may require more time than a standard application request.
+
+**Approach:**
+
+Use explicit request statuses and retrieve the generated plan only after processing is completed.
+
+### Challenge 3 — Protecting Integration Credentials
+
+Direct frontend access to private Webhooks or privileged database credentials creates security risks.
+
+**Approach:**
+
+Keep sensitive integration settings on the server side and apply appropriate database access controls.
+
+### Challenge 4 — Preventing False Success States
+
+A successfully triggered workflow does not guarantee that a valid plan was generated and saved.
+
+**Approach:**
+
+Validate generated output, verify database operations, and distinguish between request acceptance and completed processing.
+
+**Implementation Note:**
+
+These are documented engineering challenges and design considerations. Specific failures, fixes, and successful retests should be added only when supported by actual implementation evidence.
+
+---
+
+## 📚 What I Learned
+
+### Technical Lesson
+
+I learned how a web application, relational database, and automation workflow can work together as parts of an integrated AI-powered solution.
+
+The project demonstrates the importance of Webhooks, APIs, structured data, database relationships, and workflow status management.
+
+### Problem-Solving Lesson
+
+I learned that designing automation requires more than connecting tools.
+
+A reliable solution needs clear responsibilities, predictable data flow, validation rules, error handling, and mechanisms for verifying successful execution.
+
+### AI Lesson
+
+I learned how AI can support tasks that require interpretation and structured content generation while deterministic logic manages operations that require predictable behavior.
+
+The key distinction is understanding when to use AI reasoning and when to use traditional application logic.
+
+---
+
+## 🔮 Future Improvements
+
+If I continued developing this project, I would:
+
+- Add user authentication and project ownership.
+- Implement stronger access control and database security policies.
+- Introduce more detailed workflow monitoring and execution logs.
+- Add automatic retry mechanisms for recoverable failures.
+- Improve structured AI output validation.
+- Allow users to edit and regenerate project plans.
+- Support downloadable plans in PDF format.
+- Introduce project progress tracking.
+- Add plan version history.
+- Evaluate AI-generated plans using defined quality criteria.
+
+---
+
+## 🔗 Project Links
+
+**Live Demo:** Not provided
+
+**Workflow:** Add a verified n8n workflow link or exported workflow file.
+
+**Course Project Reference:**
+[PlanCraft AI — Guided Project](https://github.com/nadiazuhairkhatib-gif/ai-automation-course/tree/main/06-Automation%20%26%20Integration%20Thinking/Guided-Project)
+
+**Repository:**
+[Deema — AI Automation Portfolio](https://github.com/deemaredwan-a11y/Deema-portfolio-Ai-Automation)
+
+---
+
+## 👩‍💻 Author
+
+**Deema Radwan**
+
+AI Automation & AI-Powered Solutions
+
+[GitHub](https://github.com/deemaredwan-a11y)
+
+---
+
+> **Key Takeaway:** Successful AI automation is not just about connecting applications. It is about designing reliable data flows, secure integrations, and workflows that produce verifiable results.
+
