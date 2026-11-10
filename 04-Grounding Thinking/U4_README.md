@@ -96,6 +96,4 @@ Grounding helps shift AI development from generating plausible responses to prod
 - [Guided Project](./Course-Project/)
 - [Independent Project](./Independent-Project/)
 
----
 
-**Next:** U5 — [Next Unit Title]
