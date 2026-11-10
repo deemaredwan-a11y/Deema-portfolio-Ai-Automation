@@ -1,134 +1,321 @@
+
 # RAG with n8n — Knowledge Pipeline & RAG AI Agent
 
-> A two-part system built with n8n and Supabase: a pipeline that turns a PDF into searchable knowledge, and an AI agent that answers questions by searching that knowledge.
+> A two-part Retrieval-Augmented Generation (RAG) system built with n8n and Supabase: an automated knowledge pipeline that transforms PDF documents into searchable knowledge, and an AI agent that answers user questions using retrieved document content.
 
 ---
 
 ## 🎯 Problem
 
 ### The Context
-A language model does not automatically know the content of a specific document. Answers about a particular guide, policy or course need to come from that material.
+
+Large Language Models (LLMs) do not automatically have access to the contents of specific documents, such as course guides, organizational policies, or technical manuals.
+
+When users need accurate information from a particular document, the AI system must be able to access and retrieve relevant information from that source.
 
 ### The Problem
-Pasting documents into a chat does not scale, and a model answering from general knowledge can sound convincing without being based on the document.
+
+Manually copying documents into a chat is inefficient and does not scale.
+
+Additionally, an AI model answering questions from its general knowledge may generate responses that sound convincing but are not supported by the original document.
+
+This creates challenges related to:
+
+- Information accuracy.
+- Document accessibility.
+- Knowledge retrieval.
+- Answer reliability.
+- Efficient document management.
 
 ### Why It Matters
-When answers must come from specific material, the system needs a way to find the relevant parts of the document and use them when answering.
+
+A document-based question-answering system allows users to access relevant information without manually reading entire documents.
+
+By connecting AI responses to retrieved knowledge, the system can improve answer relevance and reduce the risk of unsupported responses.
 
 ---
 
 ## 💡 Solution
 
-A **Retrieval-Augmented Generation (RAG)** system in two parts:
+I developed a **Retrieval-Augmented Generation (RAG)** system using **n8n, Supabase, OpenAI Embeddings, and Google Gemini**.
 
-1. **Knowledge pipeline:** takes a PDF from Google Drive, extracts its text, splits it into chunks, turns the chunks into embeddings, and stores them in a Supabase vector store.
-2. **RAG AI agent:** receives a question in a chat, searches the vector store through a tool, and writes the answer from the retrieved content.
+The solution consists of two independent but connected workflows:
 
-**What does the system do?**
+**1. Knowledge Pipeline**
 
-- Watches a Google Drive folder for new files.
-- Processes a PDF into searchable knowledge stored in Supabase.
-- Answers questions in a chat by retrieving relevant chunks.
-- Keeps the conversation context with a memory node.
+Automatically processes PDF documents from Google Drive, extracts their content, divides the text into chunks, generates embeddings, and stores the resulting knowledge in a Supabase vector database.
+
+**2. RAG AI Agent**
+
+Receives user questions through a chat interface, retrieves relevant information from the Supabase vector store, and generates answers using the Google Gemini language model.
+
+### What Does the System Do?
+
+1. Monitors a Google Drive folder for newly created files.
+2. Extracts, chunks, embeds, and stores PDF content in Supabase.
+3. Retrieves relevant document passages when the AI agent searches the knowledge base.
+4. Generates contextual answers while maintaining conversation history.
 
 ---
 
 ## 👤 Users
 
 **Primary Users:**
-Anyone who needs answers from a specific document, such as learners using a course guide.
+
+- Students and learners.
+- Course participants.
+- Researchers.
+- Educators.
+- Anyone who needs answers from specific documents.
 
 **User Need:**
-Ask a question in plain language and get an answer based on the material, without reading the whole document.
+
+Users need a simple way to ask questions in natural language and receive answers based on relevant document content without manually searching through the entire PDF.
 
 ---
 
 ## 🧠 How I Designed the Solution
 
-The main design idea is to separate two jobs:
+The main architectural decision was to separate document processing from question answering.
 
-- **Preparing knowledge** (ingestion): done once per document, ahead of any question.
-- **Using knowledge** (retrieval and answering): done for every question.
+The system is divided into two stages:
 
-Other decisions:
+### 1. Knowledge Preparation (Ingestion)
 
-- **Knowledge and memory are different.** The vector store holds what the document says. The memory node holds what was said in the conversation.
-- **Embeddings are used twice:** for the document chunks when storing them, and for the question when searching.
-- **The vector store is a tool for the agent,** so the agent decides when it needs to search.
+This process prepares documents before users ask questions.
+
+It includes:
+
+- Detecting a new file in Google Drive.
+- Downloading the document.
+- Extracting text from the PDF.
+- Splitting the text into smaller chunks.
+- Generating vector embeddings.
+- Storing the processed content in Supabase.
+
+### 2. Knowledge Retrieval and Answer Generation
+
+This process runs when a user sends a question.
+
+It includes:
+
+- Receiving the user's message.
+- Using an AI agent to interpret the question.
+- Searching the Supabase vector database through a retrieval tool.
+- Retrieving relevant document chunks.
+- Generating an answer using Google Gemini.
+- Maintaining conversational context using Simple Memory.
+
+### Additional Design Considerations
+
+**Knowledge and memory serve different purposes.**
+
+The Supabase vector store contains the knowledge extracted from documents, while the Simple Memory node maintains conversational context.
+
+**Embeddings are used in both workflows.**
+
+Document chunks are embedded during ingestion, and questions are embedded during similarity search.
+
+**The vector store is connected as an AI tool.**
+
+The AI agent can decide when it needs to search the knowledge base instead of performing retrieval for every message automatically.
 
 ---
 
 ## ⚙️ How It Works
 
-**Part 1: Knowledge pipeline**
+### Part 1: Knowledge Pipeline
 
 ```text
-Google Drive Trigger (file created)
-  ↓
-Edit Fields (file id)
-  ↓
-Download file
-  ↓
-Extract from File (PDF)
-  ↓
-Supabase Vector Store (insert)
-   ├─ Default Data Loader
-   │    └─ Recursive Character Text Splitter
-   └─ Embeddings (OpenAI)
+Google Drive Trigger
+    |
+    v
+Edit Fields
+(Extract File ID)
+    |
+    v
+Google Drive
+(Download File)
+    |
+    v
+Extract from File
+(Extract PDF Text)
+    |
+    v
+Supabase Vector Store
+(Insert Documents)
+    |
+    +-- Default Data Loader
+    |       |
+    |       +-- Recursive Character
+    |           Text Splitter
+    |
+    +-- OpenAI Embeddings
+    |
+    v
+Supabase Database
+(documents table)
 ```
 
-**Part 2: RAG agent**
+### Part 2: RAG AI Agent
 
 ```text
-When chat message received
-  ↓
-AI Agent
-   ├─ Google Gemini Chat Model
-   ├─ Simple Memory
-   └─ Supabase Vector Store (tool)
-        └─ Embeddings (OpenAI)
-  ↓
-Answer
+When Chat Message Received
+            |
+            v
+         AI Agent
+            |
+            +-- Google Gemini
+            |   Chat Model
+            |
+            +-- Simple Memory
+            |
+            +-- Supabase Vector Store
+            |       |
+            |       +-- OpenAI Embeddings
+            |
+            v
+     Retrieved Knowledge
+            |
+            v
+      Generated Answer
+            |
+            v
+       Chat Response
 ```
+
+### End-to-End Process
+
+The knowledge pipeline prepares the PDF content and stores it in Supabase.
+
+When a user asks a question, the AI agent can call the Supabase Vector Store tool to retrieve relevant information.
+
+The Google Gemini model then uses the retrieved content to generate a response.
+
+Conversation memory maintains the context of previous messages.
 
 ---
 
 ## 🤖 Role of AI
 
-**What does AI do in this solution?**
+### What Does AI Do in This Solution?
 
-- Embeddings turn text into numeric vectors so that search works by meaning.
-- The language model (Gemini) understands the question, decides to use the search tool, reads the retrieved chunks and writes the answer.
+**1. Semantic Embeddings**
 
-**What AI Should NOT Do**
+OpenAI Embeddings converts document chunks into numerical vectors that represent semantic meaning.
 
-- Invent information that is not in the retrieved material. The vector store holds the knowledge, not the model.
+These vectors enable similarity-based retrieval rather than relying only on exact keyword matching.
+
+**2. Question Understanding**
+
+The Google Gemini model interprets the user's natural-language question.
+
+**3. Tool-Based Retrieval**
+
+The AI agent can decide to use the Supabase Vector Store tool to search for relevant document content.
+
+**4. Answer Generation**
+
+The language model generates a response based on the information returned by the retrieval system.
+
+**5. Conversational Context**
+
+Simple Memory helps maintain context across messages in the same conversation.
+
+### What AI Should NOT Do
+
+- Invent information that is not supported by the retrieved material.
+- Present unsupported information as a verified fact.
+- Assume that the retrieved document contains information it does not provide.
+- Confuse conversation history with the actual knowledge source.
+- Claim to have verified information when no supporting content was retrieved.
+
+The goal is to encourage grounded responses, although retrieval alone does not guarantee that every generated answer will be accurate.
 
 ---
 
 ## 🔄 Automation
 
-**What parts of the process are automated?**
+### What Parts of the Process Are Automated?
 
-- Starting the pipeline when a file is added to the Drive folder.
-- Extracting, splitting, embedding and storing the document.
-- Searching the knowledge for each question.
+**Document Processing**
+
+- Detecting newly created files in Google Drive.
+- Downloading PDF files.
+- Extracting document text.
+- Splitting text into chunks.
+- Generating embeddings.
+- Storing document chunks in Supabase.
+
+**Question Answering**
+
+- Receiving user messages.
+- Calling the retrieval tool when selected by the agent.
+- Performing vector similarity search.
+- Retrieving relevant document passages.
+- Generating AI responses.
+- Maintaining conversational context.
+
+### Automation Benefits
+
+- Reduces manual document processing.
+- Makes document content searchable.
+- Simplifies information retrieval.
+- Connects multiple services through n8n.
+- Enables reusable document-based AI workflows.
 
 ---
 
 ## 🗂️ Data
 
-**Input**
-A PDF in a Google Drive folder, and user questions in the chat.
+### Input
 
-**Knowledge source**
-*The AI Automation Starter Guide (2026 Edition)*, a third-party PDF used as the knowledge source. The PDF itself is not included in this repository.
+The system receives two main types of input:
 
-**Stored data (`documents` table in Supabase)**
-`id`, `content` (the chunk text), `metadata` (JSON with location information) and `embedding` (the vector).
+**1. Document Input**
 
-**Output**
-An answer written from the retrieved chunks.
+A PDF uploaded to a monitored Google Drive folder.
+
+**2. User Input**
+
+Natural-language questions submitted through the chat interface.
+
+### Knowledge Source
+
+The project uses:
+
+**The AI Automation Starter Guide (2026 Edition)**
+
+This third-party PDF serves as the knowledge source for testing the RAG system.
+
+The original PDF is not included in this repository.
+
+### Stored Data
+
+Document chunks and embeddings are stored in the Supabase `documents` table.
+
+| Field | Description |
+|---|---|
+| `id` | Unique identifier for each stored record |
+| `content` | Extracted text chunk |
+| `metadata` | JSON containing document location information |
+| `embedding` | Numerical vector representing semantic meaning |
+
+### Output
+
+The system produces:
+
+- AI-generated answers.
+- Responses based on retrieved document passages.
+- Context-aware conversations.
+
+### Knowledge Ingestion Result
+
+During testing, the Supabase `documents` table contained:
+
+**233 stored records**
+
+The stored content included passages extracted from the course guide, such as its table of contents and chapters.
 
 ---
 
@@ -136,62 +323,166 @@ An answer written from the retrieved chunks.
 
 | Tool | Purpose |
 |---|---|
-| n8n Cloud | Building the pipeline and the agent |
-| Google Drive | Source of the document |
-| Supabase (PostgreSQL + vector support) | Storing chunks and embeddings and searching them |
-| OpenAI Embeddings | Turning chunks and questions into vectors |
-| Google Gemini | The chat model behind the agent |
-| GitHub | Documenting the project |
+| n8n Cloud | Building and orchestrating the automation workflows |
+| Google Drive | Hosting the PDF knowledge source and triggering ingestion |
+| Extract from File | Extracting text from PDF documents |
+| Recursive Character Text Splitter | Dividing document text into smaller chunks |
+| OpenAI Embeddings | Generating embeddings for document chunks and questions |
+| Supabase | Storing document chunks, metadata, and embeddings |
+| PostgreSQL + pgvector | Supporting vector storage and similarity search |
+| Google Gemini | Understanding questions and generating responses |
+| n8n AI Agent | Coordinating the language model and retrieval tool |
+| Simple Memory | Maintaining conversational context |
+| GitHub | Hosting project documentation and screenshots |
 
 ---
 
 ## 🔑 Key Design Decisions
 
-### Decision 1
-**Decision:** Build ingestion and answering as two separate workflows.
+### Decision 1 — Separate Ingestion and Answering
 
-**Why:** Preparing knowledge and answering questions are different jobs. Keeping them apart makes each one easier to run and to check.
+**Decision:**
 
-### Decision 2
-**Decision:** Give the agent the vector store as a tool.
+Create two independent n8n workflows: one for document ingestion and another for question answering.
 
-**Why:** The agent searches when a question needs the document, instead of searching blindly for every message.
+**Why:**
 
-### Decision 3
-**Decision:** Use the same embedding approach for documents and for questions.
+Document processing and question answering are different operations.
 
-**Why:** A question vector can only be compared fairly with document vectors made the same way.
+Separating them makes the system easier to maintain, test, and extend.
+
+It also avoids repeating document processing for every user question.
+
+### Decision 2 — Use Supabase as a Vector Database
+
+**Decision:**
+
+Store document chunks and embeddings in Supabase.
+
+**Why:**
+
+Supabase provides PostgreSQL-based storage with vector search capabilities.
+
+This allows the system to retrieve document passages based on semantic similarity.
+
+### Decision 3 — Connect the Vector Store as an AI Tool
+
+**Decision:**
+
+Provide the Supabase Vector Store to the AI agent as a retrieval tool.
+
+**Why:**
+
+The agent can determine when document retrieval is needed.
+
+This supports flexible, tool-based question answering.
+
+### Decision 4 — Use the Same Embedding Approach
+
+**Decision:**
+
+Use OpenAI Embeddings for both document ingestion and question retrieval.
+
+**Why:**
+
+Documents and questions must be represented in a compatible vector space for similarity search.
+
+Using the same embedding model and configuration helps ensure compatibility.
+
+### Decision 5 — Separate Knowledge from Conversation Memory
+
+**Decision:**
+
+Use Supabase for document knowledge and Simple Memory for conversation history.
+
+**Why:**
+
+Document knowledge and conversational context have different responsibilities.
+
+This separation makes the architecture clearer and helps prevent confusion between stored facts and previous messages.
 
 ---
 
 ## 🧪 Testing
 
-### Test 1: Knowledge ingestion
-**Input:** Add the PDF to the Google Drive folder.
+### Test 1 — Knowledge Ingestion
 
-**Expected Result:** The pipeline processes the file and stores its chunks, with embeddings, in Supabase.
+**Input:**
 
-**Actual Result:** The `documents` table holds 233 records, and the stored `content` shows passages from the guide (such as its table of contents and chapters).
+Add the PDF document to the monitored Google Drive folder.
 
-**Status:** ✅
+**Expected Result:**
 
-### Test 2: The agent searches the knowledge
-**Input:** Ask the agent a question in the chat.
+The knowledge pipeline should:
 
-**Expected Result:** The agent uses the vector store tool before answering.
+1. Detect the new file.
+2. Download the PDF.
+3. Extract its text.
+4. Split the content into chunks.
+5. Generate embeddings.
+6. Store the processed chunks in Supabase.
 
-**Actual Result:** The execution logs show the agent calling the Supabase Vector Store tool, with OpenAI embeddings, together with the memory node and the Gemini model.
+**Actual Result:**
 
-**Status:** ✅
+The Supabase `documents` table contained **233 records**.
 
-### Test 3: Question about the course material
-**Input:** `Whats the name of Course ?`
+The stored `content` fields included passages extracted from the guide, including sections from its table of contents and chapters.
 
-**Expected Result:** An answer based on the retrieved material, without making up a title.
+**Status:** ✅ Passed
 
-**Actual Result:** The agent answered from the course materials: it said the course focuses on workflow automation with n8n, noted that no official title was explicitly listed in the retrieved sections, and summarized the topics it found (introduction to automation, n8n core concepts and nodes, building and managing workflows, and AI in automation).
+---
 
-**Status:** ✅
+### Test 2 — Knowledge Retrieval
+
+**Input:**
+
+Submit a question through the AI agent chat interface.
+
+**Expected Result:**
+
+The AI agent should call the Supabase Vector Store tool to retrieve relevant document chunks.
+
+**Actual Result:**
+
+The execution logs showed the AI agent using:
+
+- Supabase Vector Store.
+- OpenAI Embeddings.
+- Google Gemini Chat Model.
+- Simple Memory.
+
+The retrieval tool was called during execution.
+
+**Status:** ✅ Passed
+
+---
+
+### Test 3 — Course-Related Question
+
+**Input:**
+
+```text
+Whats the name of Course ?
+```
+
+**Expected Result:**
+
+The agent should respond based on the retrieved course material without inventing an official course title.
+
+**Actual Result:**
+
+The agent explained that the retrieved content focused on workflow automation using n8n.
+
+It indicated that no official course title was explicitly identified in the retrieved sections.
+
+The response summarized topics including:
+
+- Introduction to automation.
+- n8n core concepts and nodes.
+- Building and managing workflows.
+- AI in automation.
+
+**Status:** ✅ Passed
 
 ---
 
@@ -199,32 +490,141 @@ An answer written from the retrieved chunks.
 
 ### Final Result
 
-![Agent chat test](Screenshots/06-agent-chat-test.png)
+**AI Agent Chat Test**
 
-![Stored chunks in Supabase](Screenshots/05-supabase-stored-chunks.png)
+![AI Agent Chat Test](Screenshots/06-agent-chat-test.png)
+
+**Stored Knowledge Chunks in Supabase**
+
+![Stored Chunks in Supabase](Screenshots/05-supabase-stored-chunks.png)
 
 ### Workflow
 
-![Knowledge pipeline](Screenshots/01-ingestion-workflow.png)
+**Knowledge Pipeline**
 
-![RAG agent](Screenshots/02-rag-agent-workflow.png)
+![Knowledge Pipeline Workflow](Screenshots/01-ingestion-workflow.png)
 
-![Knowledge source folder](Screenshots/03-knowledge-source-folder.png)
+**RAG AI Agent**
 
-![Supabase tables](Screenshots/04-supabase-documents-table.png)
+![RAG AI Agent Workflow](Screenshots/02-rag-agent-workflow.png)
+
+### Additional Evidence
+
+**Google Drive Knowledge Source**
+
+![Knowledge Source Folder](Screenshots/03-knowledge-source-folder.png)
+
+**Supabase Documents Table**
+
+![Supabase Documents Table](Screenshots/04-supabase-documents-table.png)
+
+---
+
+## ⚠️ Challenges & Failures
+
+### Challenge 1 — Verifying Document Ingestion
+
+**Challenge:**
+
+A successful workflow execution alone is not sufficient evidence that document content was stored correctly.
+
+**Approach:**
+
+Inspect the Supabase `documents` table and verify that stored records contain extracted text and embeddings.
+
+**Evidence:**
+
+The ingestion test confirmed 233 stored records containing passages from the source guide.
+
+### Challenge 2 — Verifying AI Tool Usage
+
+**Challenge:**
+
+An AI agent may produce an answer without necessarily retrieving information from the intended knowledge source.
+
+**Approach:**
+
+Inspect the n8n execution logs to verify that the Supabase Vector Store tool was called.
+
+**Evidence:**
+
+Execution logs confirmed that the agent called the retrieval tool.
+
+### Challenge 3 — Avoiding Unsupported Answers
+
+**Challenge:**
+
+The model may generate an answer even when the retrieved information does not explicitly contain the requested detail.
+
+**Approach:**
+
+Evaluate whether the response distinguishes retrieved information from unsupported assumptions.
+
+**Evidence:**
+
+In the course-name test, the agent did not invent an official title when the retrieved material did not explicitly provide one.
+
+### Reliability Limitations
+
+The completed tests verify ingestion, tool invocation, and one document-related response.
+
+They do not yet establish comprehensive reliability under conditions such as:
+
+- External API failures.
+- Invalid or corrupted PDF files.
+- Duplicate document uploads.
+- Missing or irrelevant retrieval results.
+- Large document processing failures.
+- Multiple simultaneous requests.
+
+These scenarios require additional testing before describing the system as production-ready.
 
 ---
 
 ## 📚 What I Learned
 
 ### Technical Lesson
-How a RAG system is built from separate parts: extraction, chunking, embeddings, a vector store, a retrieval tool and a model.
+
+I learned how to build a RAG architecture by combining several independent components:
+
+- PDF text extraction.
+- Document chunking.
+- Vector embeddings.
+- Vector database storage.
+- Semantic retrieval.
+- AI agent tool integration.
+- Language model response generation.
+
+I also learned how n8n can coordinate these components across multiple services.
 
 ### Problem-Solving Lesson
-When an answer is wrong, find the stage first: was the document stored, was the right chunk retrieved, or did the model use it badly?
+
+When an AI answer is incorrect or incomplete, the problem may originate from different stages of the system.
+
+A useful troubleshooting approach is to investigate:
+
+1. Was the document processed correctly?
+2. Were the chunks stored successfully?
+3. Did the retrieval system return relevant information?
+4. Did the language model use the retrieved information appropriately?
+
+This helps isolate problems rather than treating the entire RAG system as a single component.
 
 ### AI Lesson
-RAG is an architecture, not a single node. Retrieval finds the information and the model writes the answer, and each needs its own checking.
+
+RAG is not a single AI node.
+
+It is an architecture that combines retrieval and generation.
+
+The retrieval system identifies relevant knowledge, while the language model interprets and communicates that information.
+
+Both components must be evaluated independently.
+
+### Reliability Lesson
+
+A successful execution does not automatically guarantee a correct result.
+
+Reliable AI automation requires verification of intermediate steps, examination of execution logs, and testing of both expected and unexpected conditions.
 
 ---
 
@@ -232,22 +632,90 @@ RAG is an architecture, not a single node. Retrieval finds the information and t
 
 If I continued developing this project, I would:
 
-- Add more documents to the knowledge base.
-- Compare different chunk sizes and numbers of retrieved chunks, changing one setting at a time.
-- Store the file name in the chunk metadata so answers can point to their source.
+### 1. Expand the Knowledge Base
+
+Support additional documents and organize them using useful metadata.
+
+### 2. Improve Retrieval Quality
+
+Experiment with different:
+
+- Chunk sizes.
+- Chunk overlap values.
+- Similarity thresholds.
+- Numbers of retrieved chunks.
+
+Change one configuration at a time to evaluate its effect on retrieval quality.
+
+### 3. Add Source Attribution
+
+Store document names and source information in chunk metadata so generated answers can reference their original documents.
+
+### 4. Improve Error Handling
+
+Add dedicated error-handling paths for:
+
+- Failed Google Drive downloads.
+- PDF extraction errors.
+- Embedding API failures.
+- Supabase insertion errors.
+- AI model errors.
+
+### 5. Prevent Duplicate Ingestion
+
+Introduce document identifiers or content hashes to detect files that have already been processed.
+
+### 6. Improve Answer Reliability
+
+Add response instructions and validation mechanisms that encourage the agent to acknowledge when the retrieved knowledge is insufficient.
+
+### 7. Add Monitoring and Logging
+
+Track workflow execution results, errors, processing times, and retrieval activity.
+
+### 8. Expand Testing
+
+Create additional test cases covering successful operations, invalid inputs, missing information, service failures, and repeated requests.
 
 ---
 
 ## 🔗 Project Links
 
-**Workflow:** [Knowledge pipeline screenshot](Screenshots/01-ingestion-workflow.png) · [RAG agent screenshot](Screenshots/02-rag-agent-workflow.png)
+**Live Demo:** Not publicly available.
 
-**Repository:** [Portfolio_Template](https://github.com/danaabuhassira/Portfolio_Template)
+**Knowledge Pipeline Workflow:**
+
+[View Knowledge Pipeline Screenshot](Screenshots/01-ingestion-workflow.png)
+
+**RAG AI Agent Workflow:**
+
+[View RAG Agent Screenshot](Screenshots/02-rag-agent-workflow.png)
+
+**Course Reference:**
+
+[AI Automation Course — GitHub](https://github.com/nadiazuhairkhatib-gif/ai-automation-course)
+
+
+[Project Repository](https://github.com/deemaredwan-a11y/Deema-portfolio-Ai-Automation/edit/main/07-Reliability%20%26%20Production%20Thinking)
 
 ---
 
 ## 👩‍💻 Author
 
-**Dana Abu Hassira**
+**[Dima Redwan ]**
 
-[LinkedIn](https://www.linkedin.com/in/dana-abu-hassira-3a23a6294) · [GitHub](https://github.com/danaabuhassira)
+AI Automation & AI Agent Development
+
+[LinkedIn Profile](https://www.linkedin.com/in/deema-radwan-a06a19370/) · [GitHub Profile](https://github.com/deemaredwan-a11)
+
+---
+
+## 📌 Project Summary
+
+This project demonstrates how to build a document-based AI question-answering system using Retrieval-Augmented Generation.
+
+By combining n8n automation, Google Drive, OpenAI Embeddings, Supabase, and Google Gemini, the system transforms a PDF into searchable knowledge and allows users to ask questions through an AI agent.
+
+The completed tests demonstrate successful knowledge ingestion, retrieval-tool execution, and a grounded response to a course-related question.
+
+The project also highlights the importance of separating knowledge preparation from question answering, verifying intermediate processing results, and evaluating AI behavior before deploying automated systems into production.
