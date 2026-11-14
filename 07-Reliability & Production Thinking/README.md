@@ -657,26 +657,6 @@ Create additional test cases covering successful operations, invalid inputs, mis
 
 ---
 
-## 🔗 Project Links
-
-**Live Demo:** Not publicly available.
-
-**Knowledge Pipeline Workflow:**
-
-[View Knowledge Pipeline Screenshot](Screenshots/01-ingestion-workflow.png)
-
-**RAG AI Agent Workflow:**
-
-[View RAG Agent Screenshot](Screenshots/02-rag-agent-workflow.png)
-
-**Course Reference:**
-
-[AI Automation Course — GitHub](https://github.com/nadiazuhairkhatib-gif/ai-automation-course)
-
-
-[Project Repository](https://github.com/deemaredwan-a11y/Deema-portfolio-Ai-Automation/edit/main/07-Reliability%20%26%20Production%20Thinking)
-
----
 
 ## 👩‍💻 Author
 
