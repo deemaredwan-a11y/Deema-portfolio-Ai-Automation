@@ -488,35 +488,13 @@ The response summarized topics including:
 
 ## 📸 Evidence
 
-### Final Result
+### [Final Result](https://github.com/deemaredwan-a11y/Deema-portfolio-Ai-Automation/tree/main/07-Reliability%20%26%20Production%20Thinking/Screenshot)
 
-**AI Agent Chat Test**
 
-![AI Agent Chat Test](Screenshots/06-agent-chat-test.png)
 
-**Stored Knowledge Chunks in Supabase**
 
-![Stored Chunks in Supabase](Screenshots/05-supabase-stored-chunks.png)
 
-### Workflow
 
-**Knowledge Pipeline**
-
-![Knowledge Pipeline Workflow](Screenshots/01-ingestion-workflow.png)
-
-**RAG AI Agent**
-
-![RAG AI Agent Workflow](Screenshots/02-rag-agent-workflow.png)
-
-### Additional Evidence
-
-**Google Drive Knowledge Source**
-
-![Knowledge Source Folder](Screenshots/03-knowledge-source-folder.png)
-
-**Supabase Documents Table**
-
-![Supabase Documents Table](Screenshots/04-supabase-documents-table.png)
 
 ---
 
@@ -706,7 +684,7 @@ Create additional test cases covering successful operations, invalid inputs, mis
 
 AI Automation & AI Agent Development
 
-[LinkedIn Profile](https://www.linkedin.com/in/deema-radwan-a06a19370/) · [GitHub Profile](https://github.com/deemaredwan-a11)
+[LinkedIn Profile](https://www.linkedin.com/in/deema-radwan-a06a19370/) · [GitHub Profile](https://github.com/deemaredwan-a11y)
 
 ---
 
