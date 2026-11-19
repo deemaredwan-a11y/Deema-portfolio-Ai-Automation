@@ -478,10 +478,9 @@ Pending verification.
 ## 📸 Evidence
 
 ### Final Result
-
-<img width="1473" height="667" alt="image" src="https://github.com/user-attachments/assets/e7406607-4d13-446c-aa2d-f5e857651e86" />
-<img width="1482" height="662" alt="image" src="https://github.com/user-attachments/assets/f4e36e7e-dd8d-44c2-b641-88ee9c24314f" />
-<img width="1466" height="678" alt="image" src="https://github.com/user-attachments/assets/8a493b76-71de-44cf-92a6-a35c1536642c" />
+<img width="1228" height="673" alt="image" src="https://github.com/user-attachments/assets/a7143eab-eee7-40c3-b29e-dd78ce052718" />
+<img width="1067" height="496" alt="image" src="https://github.com/user-attachments/assets/3322008c-dafc-465a-916c-19cb02bfd6b3" />
+<img width="981" height="524" alt="image" src="https://github.com/user-attachments/assets/327e6422-8b0c-45be-abd3-8f14b231969b" />
 
 
 
