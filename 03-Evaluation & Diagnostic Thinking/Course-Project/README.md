@@ -603,7 +603,7 @@ These improvements would be considered after validating the usability and reliab
 
 ## 🔗 Project Links
 
-**Live Demo:** [https://layout-capture-bot.lovable.app]
+**Live Demo:** []
 
 
 **Repository:** [https://github.com/deemaredwan-a11y/Deema-portfolio-Ai-Automation/tree/main/03-Evaluation%20%26%20Diagnostic%20Thinking]
